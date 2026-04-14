@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora de Ahorro - Eco Energy Solución</title>
+    
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="home.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        /* Variables exclusivas para el tablero de la calculadora */
+        :root {
+            --panel-bg: #1e1e1e;
+            --text-main: #e0e0e0;
+            --text-muted: #9e9e9e;
+            --accent-blue: #2196f3;
+            --accent-green: #4caf50;
+            --accent-gold: #ffc107;
+            --accent-red: #ff5252;
+            --border-color: #333;
+        }
+
+        /* Sección que envuelve la calculadora para separarla del navbar */
+       .calculadora-wrapper {
+            padding: 120px 20px 80px; 
+            background-color: #f4f4f4; 
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 80vh;
+        }
+
+        .calculadora-titulo {
+            text-align: center;
+            color: #2e7d32;
+            margin-bottom: 30px;
+        }
+
+        /* Estilos aislados del Dashboard */
+        .dashboard {
+            background-color: var(--panel-bg);
+            color: var(--text-main);
+            border-radius: 16px;
+            padding: 25px;
+            max-width: 900px;
+            width: 100%;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.15);
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        .dashboard input { font-family: inherit; }
+
+        .tarifa-section {
+            display: flex; justify-content: space-between; align-items: center;
+            background: #252525; padding: 15px 20px; border-radius: 10px;
+        }
+
+        .input-box { display: flex; flex-direction: column; gap: 5px; }
+        .input-box label { font-size: 0.85rem; color: var(--text-muted); font-weight: bold;}
+        .input-box input {
+            background: #121212; border: 1px solid var(--border-color); color: white;
+            padding: 8px 12px; border-radius: 5px; font-size: 1.1rem; width: 120px;
+        }
+        .input-box input:focus { outline: none; border-color: var(--accent-gold); color: white; }
+
+        .tarifa-result { text-align: right; }
+        .tarifa-result span { display: block; font-size: 0.85rem; color: var(--text-muted); text-transform: uppercase;}
+        .tarifa-result strong { font-size: 1.8rem; color: #eee; }
+
+        .metrics-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 15px; margin-bottom: 25px; }
+        .metric-card {
+            background: #2a2a2a; padding: 15px; border-radius: 8px; text-align: center;
+            border-top: 3px solid var(--accent-blue); display: flex; flex-direction: column; justify-content: center;
+        }
+        .metric-card.money { border-top-color: var(--accent-green); background: rgba(76, 175, 80, 0.05); }
+
+        .metric-title { font-size: 0.75rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 8px;}
+        .metric-value { font-size: 1.4rem; font-weight: bold; }
+        .money .metric-value { color: var(--accent-green); }
+
+        .chart-container {
+            height: 180px; display: flex; align-items: flex-end; justify-content: space-between;
+            padding: 10px 10px 0 10px; border-bottom: 2px solid var(--border-color); margin-bottom: 15px; gap: 5px;
+        }
+
+        .bar-wrapper { flex: 1; display: flex; flex-direction: column; align-items: center; height: 100%; justify-content: flex-end; }
+        .bar {
+            width: 75%; background: linear-gradient(to top, #1976d2, #42a5f5);
+            border-radius: 3px 3px 0 0; transition: height 0.4s ease; min-height: 2px;
+        }
+        .bar-label { margin-top: 8px; font-size: 0.75rem; color: var(--text-muted); }
+
+        .inputs-grid { display: grid; grid-template-columns: repeat(6, 1fr); gap: 10px; margin-top: 10px; }
+        .input-group input {
+            width: 100%; background: #252525; border: 1px solid var(--border-color); color: white;
+            padding: 8px 5px; text-align: center; border-radius: 4px; box-sizing: border-box;
+        }
+        .input-group input:focus { outline: none; border-color: var(--accent-blue); }
+
+        @media (max-width: 700px) {
+            .metrics-grid { grid-template-columns: repeat(2, 1fr); }
+            .inputs-grid { grid-template-columns: repeat(3, 1fr); }
+            .tarifa-section { flex-direction: column; align-items: flex-start; }
+            .tarifa-result { text-align: left; margin-top: 10px; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="navbar">
+        <div class="navbar-container">
+            <a href="index.html" class="navbar-logo">
+                <img src="Gemini_Generated_Image_jjgrg3jjgrg3jjgr.png" alt="Eco Energy Logo" class="logo-img">
+            </a>
+            <ul class="navbar-menu">
+                <li><a href="index.html" class="nav-link">Inicio</a></li>
+                <li><a href="productos.html" class="nav-link">Productos</a></li>
+                <li><a href="index.html#quienes-somos" class="nav-link">Quiénes Somos</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <section class="calculadora-wrapper">
+        <div class="calculadora-titulo">
+            <h1>Simulador de Ahorro Solar</h1>
+            <p>Ingresa los datos de tu recibo (ENSA / Naturgy) y descubre cuánto puedes ahorrar.</p>
+        </div>
+
+        <div class="dashboard">
+            <div class="tarifa-section">
+                <div class="input-box">
+                    <label>Monto de la Factura ($)</label>
+                    <input type="number" id="facMonto" placeholder="Ej. 120.50" step="0.01" oninput="calcular()">
+                </div>
+                <div class="input-box">
+                    <label>Consumo de la Factura (kWh)</label>
+                    <input type="number" id="facKwh" placeholder="Ej. 650" step="1" oninput="calcular()">
+                </div>
+                <div class="tarifa-result">
+                    <span>Precio Exacto por kWh</span>
+                    <strong id="lblTarifa">$0.000</strong>
+                </div>
+            </div>
+
+            <div class="metrics-grid">
+                <div class="metric-card">
+                    <div class="metric-title">Consumo Anual</div>
+                    <div class="metric-value" id="valAnual">0 <small>kWh</small></div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-title">Promedio Mensual</div>
+                    <div class="metric-value" id="valMensual">0 <small>kWh</small></div>
+                </div>
+                <div class="metric-card daily">
+                    <div class="metric-title">Consumo por Día</div>
+                    <div class="metric-value" id="valDiario">0 <small>kWh/día</small></div>
+                </div>
+                
+                <div class="metric-card money">
+                    <div class="metric-title">Pago Anual</div>
+                    <div class="metric-value" id="pagoAnual">$0.00</div>
+                </div>
+                <div class="metric-card money">
+                    <div class="metric-title">Pago Mensual</div>
+                    <div class="metric-value" id="pagoMensual">$0.00</div>
+                </div>
+                <div class="metric-card money daily">
+                    <div class="metric-title">Costo por Día</div>
+                    <div class="metric-value" id="pagoDiario">$0.00</div>
+                </div>
+            </div>
+
+            <div class="chart-container" id="chart"></div>
+
+            <div class="inputs-grid" id="inputs"></div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-section">
+                <h3>Quiénes Somos</h3>
+                <p>Eco Energy Solutions es una empresa comprometida con el futuro sostenible. Nos dedicamos a proporcionar soluciones de energía limpia y renovable para un mundo mejor.</p>
+            </div>
+            <div class="footer-section">
+                <h3>Síguenos</h3>
+                <div class="social-links">
+                    <a href="https://instagram.com" target="_blank" class="social-link"><i class="fab fa-instagram social-icon"></i> Instagram</a>
+                    <a href="https://facebook.com" target="_blank" class="social-link"><i class="fab fa-facebook-f social-icon"></i> Facebook</a>
+                    <a href="https://wa.me/50700000000" target="_blank" class="social-link"><i class="fab fa-whatsapp social-icon"></i> WhatsApp</a>
+                </div>
+            </div>
+            <div class="footer-section">
+                <h3>Contacto</h3>
+                <p>info@ecoenergysolucion.com</p>
+                <p>+507 0000-0000</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 Eco Energy Solutions. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script>
+        const meses = ['Ene', 'Feb', 'Mar', 'Abr', 'May', 'Jun', 'Jul', 'Ago', 'Sep', 'Oct', 'Nov', 'Dic'];
+        const chartContainer = document.getElementById('chart');
+        const inputsContainer = document.getElementById('inputs');
+
+        // Inicializar barras e inputs
+        meses.forEach((mes, i) => {
+            chartContainer.innerHTML += `
+                <div class="bar-wrapper">
+                    <div class="bar" id="bar-${i}" style="height: 0%"></div>
+                    <div class="bar-label">${mes}</div>
+                </div>
+            `;
+            inputsContainer.innerHTML += `
+                <div class="input-group">
+                    <input type="number" class="kwh-input" id="input-${i}" placeholder="${mes}" min="0" oninput="calcular()">
+                </div>
+            `;
+        });
+
+        function calcular() {
+            const facMonto = parseFloat(document.getElementById('facMonto').value) || 0;
+            const facKwh = parseFloat(document.getElementById('facKwh').value) || 0;
+            
+            let tarifaEfectiva = 0;
+            if (facMonto > 0 && facKwh > 0) {
+                tarifaEfectiva = facMonto / facKwh;
+            }
+            document.getElementById('lblTarifa').innerText = `$${tarifaEfectiva.toFixed(4)}`;
+
+            const inputs = document.querySelectorAll('.kwh-input');
+            let valores = [];
+            let totalAnualKwh = 0;
+
+            inputs.forEach(input => {
+                let val = parseFloat(input.value) || 0;
+                valores.push(val);
+                totalAnualKwh += val;
+            });
+
+            const promMensualKwh = totalAnualKwh / 12;
+            const promDiarioKwh = totalAnualKwh / 365;
+
+            const pagoAnualTotal = totalAnualKwh * tarifaEfectiva;
+            const pagoMensualPromedio = pagoAnualTotal / 12;
+            const pagoDiarioPromedio = pagoAnualTotal / 365;
+
+            document.getElementById('valAnual').innerHTML = `${totalAnualKwh.toLocaleString('en-US', {maximumFractionDigits:0})} <small>kWh</small>`;
+            document.getElementById('valMensual').innerHTML = `${promMensualKwh.toLocaleString('en-US', {maximumFractionDigits:1})} <small>kWh</small>`;
+            document.getElementById('valDiario').innerHTML = `${promDiarioKwh.toLocaleString('en-US', {maximumFractionDigits:2})} <small>kWh</small>`;
+            
+            document.getElementById('pagoAnual').innerText = `$${pagoAnualTotal.toLocaleString('en-US', {minimumFractionDigits:2, maximumFractionDigits:2})}`;
+            document.getElementById('pagoMensual').innerText = `$${pagoMensualPromedio.toLocaleString('en-US', {minimumFractionDigits:2, maximumFractionDigits:2})}`;
+            document.getElementById('pagoDiario').innerText = `$${pagoDiarioPromedio.toLocaleString('en-US', {minimumFractionDigits:2, maximumFractionDigits:2})}`;
+
+            const maxVal = Math.max(...valores, 1); 
+            valores.forEach((val, i) => {
+                const porcentaje = (val / maxVal) * 100;
+                document.getElementById(`bar-${i}`).style.height = `${porcentaje}%`;
+            });
+        }
+    </script>
+</body>
+</html>

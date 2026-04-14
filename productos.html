@@ -8,375 +8,177 @@
     <link rel="stylesheet" href="home.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        .productos-page {
-            padding-top: 120px;
-        }
-        .page-header {
-            text-align: center;
-            padding: 60px 20px;
-            background: #f4f4f4;
-        }
-        .page-header h1 {
-            color: #008080;
-            font-size: 2.5rem;
-            margin-bottom: 10px;
-        }
-        .back-link {
-            display: inline-block;
-            margin-top: 20px;
-            color: #008080;
-            text-decoration: none;
-            font-weight: bold;
-        }
-        .back-link:hover {
-            text-decoration: underline;
-        }
-        .inversor-destacado {
+        .productos-page { padding-top: 120px; }
+        .page-header { text-align: center; padding: 60px 20px; background: #ffffff; border-bottom: 1px solid #eee; }
+        .page-header h1 { color: #2e7d32; font-size: 2.5rem; margin-bottom: 10px; }
+        
+        /* Contenedor de Producto Estilo Ficha Técnica */
+        .ficha-producto {
             max-width: 900px;
-            margin: 40px auto;
-            padding: 30px;
-            border-radius: 20px;
+            margin: 30px auto;
+            padding: 40px;
+            border-radius: 15px;
             background: #ffffff;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-            display: flex;
-            flex-wrap: wrap;
-            align-items: center;
-            gap: 30px;
-            border-left: 8px solid #2e7d32;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+            border-left: 10px solid #2e7d32;
         }
+
+        .header-ficha { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 20px; }
+        .badge-tecnologia { background: #e8f5e9; color: #2e7d32; padding: 5px 15px; border-radius: 50px; font-weight: bold; font-size: 0.8rem; }
         
-        .inversor-imagen {
-            flex: 1;
-            min-width: 280px;
-            text-align: center;
-        }
-        
-        .inversor-imagen img {
-            width: 100%;
-            max-width: 250px;
-            filter: drop-shadow(5px 5px 15px rgba(0,0,0,0.1));
-        }
-        
-        .inversor-info {
-            flex: 2;
-            min-width: 300px;
-        }
-        
-        .badge-tecnologia {
-            background: #e8f5e9;
-            color: #2e7d32;
-            padding: 5px 15px;
-            border-radius: 50px;
-            font-weight: bold;
-            font-size: 0.8rem;
-        }
-        
-        .inversor-info h3 {
-            font-size: 2rem;
-            color: #333;
-            margin: 10px 0;
-        }
-        
-        .inversor-info > p {
-            color: #666;
-            line-height: 1.6;
-        }
-        
-        .caracteristicas-grid {
+        .ficha-producto h3 { font-size: 2.2rem; color: #333; margin: 5px 0; }
+        .ficha-producto p { color: #666; line-height: 1.6; margin-bottom: 25px; }
+
+        /* Cuadrícula de Especificaciones */
+        .specs-grid {
             display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 15px;
-            margin-top: 20px;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 20px;
+            background: #f9f9f9;
+            padding: 25px;
+            border-radius: 12px;
         }
-        
-        .caracteristica-item {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-        
-        .caracteristica-item span {
-            font-size: 1.2rem;
-        }
-        
-        .caracteristica-item strong {
-            display: block;
-            font-size: 0.9rem;
-        }
-        
-        .caracteristica-item small {
-            color: #2e7d32;
-            font-weight: bold;
-        }
-        
-        .btn-ficha {
-            margin-top: 25px;
-            background: #2e7d32;
-            color: white;
-            border: none;
-            padding: 12px 25px;
-            border-radius: 8px;
-            font-weight: bold;
-            cursor: pointer;
-            transition: 0.3s;
-        }
-        
-        .btn-ficha:hover {
-            background: #1b5e20;
-        }
-        
-        .paneles-section {
-            max-width: 1100px;
-            margin: 50px auto;
-            padding: 0 20px;
-        }
-        
-        .paneles-section h2 {
-            text-align: center;
-            color: #008080;
-            font-size: 2rem;
-            margin-bottom: 30px;
-        }
-        
+
+        .spec-item { display: flex; flex-direction: column; gap: 5px; }
+        .spec-item i { color: #2e7d32; font-size: 1.2rem; margin-bottom: 5px; }
+        .spec-item strong { font-size: 0.9rem; color: #333; text-transform: uppercase; }
+        .spec-item span { font-size: 1.1rem; color: #2e7d32; font-weight: bold; }
+
+        /* Grid de Otros Paneles */
         .paneles-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: 20px;
+            max-width: 1100px;
+            margin: 40px auto;
+            padding: 0 20px;
         }
-        
-        .panel-card {
-            padding: 20px;
+
+        .panel-simple-card {
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
             border: 1px solid #eee;
-            border-radius: 8px;
-            transition: 0.3s;
-            background: #fafafa;
             text-align: center;
+            transition: 0.3s;
         }
-        
-        .panel-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
-        }
-        
-        .panel-card strong {
-            display: block;
-            font-size: 1.2rem;
-            color: #008080;
-            margin-bottom: 10px;
-        }
-        
-        .panel-card p {
-            font-size: 0.9rem;
-            color: #666;
-            margin: 0;
-        }
-        
-        @media (max-width: 768px) {
-            .inversor-destacado {
-                flex-direction: column;
-                text-align: center;
-            }
-            
-            .caracteristicas-grid {
-                grid-template-columns: 1fr;
-            }
-            
-            .inversor-info h3 {
-                font-size: 1.5rem;
-            }
-        }
+
+        .panel-simple-card:hover { transform: translateY(-5px); border-color: #2e7d32; }
+        .panel-simple-card i { font-size: 2.5rem; color: #2e7d32; margin-bottom: 15px; }
+        .panel-simple-card h4 { color: #333; margin-bottom: 10px; }
     </style>
 </head>
 <body>
-    <!-- Navegación -->
     <nav class="navbar">
         <div class="navbar-container">
             <a href="index.html" class="navbar-logo">
                 <img src="Gemini_Generated_Image_jjgrg3jjgrg3jjgr.png" alt="Eco Energy Logo" class="logo-img">
             </a>
             <ul class="navbar-menu">
-                <li><a href="index.html#productos" class="nav-link">Volver a Inicio</a></li>
+                <li><a href="index.html" class="nav-link">Inicio</a></li>
+                <li><a href="calculadora.html" class="nav-link" style="background: #2e7d32; color: white; padding: 8px 15px; border-radius: 5px;">Calcula tu Factura</a></li>
             </ul>
         </div>
     </nav>
 
-    <!-- Header -->
     <div class="page-header">
-        <h1>Nuestros Equipos Certificados</h1>
-        <p>Calidad garantizada para tu instalación solar</p>
-        <a href="index.html" class="back-link">
-            <i class="fas fa-arrow-left"></i> Volver al Inicio
-        </a>
+        <h1>Equipos Certificados</h1>
+        <p>Especificaciones técnicas de alta eficiencia para Panamá</p>
     </div>
 
-    <!-- Inversor Destacado -->
-    <div class="inversor-destacado">
-        <div class="inversor-imagen">
-            <img src="Gemini_Generated_Image_8mfqgj8mfqgj8mfq.png" alt="Solis 1P5K-4G">
+    <div class="ficha-producto">
+        <div class="header-ficha">
+            <div>
+                <span class="badge-tecnologia">INVERSOR MONOFÁSICO - 4TA GEN</span>
+                <h3>Solis-1P5K-4G</h3>
+            </div>
+            <i class="fas fa-microchip" style="font-size: 2.5rem; color: #2e7d32;"></i>
         </div>
-        <div class="inversor-info">
-            <span class="badge-tecnologia">TECNOLOGÍA DE 4TA GENERACIÓN</span>
-            <h3>Solis-1P5K-4G</h3>
-            <p>Inversor monofásico diseñado para maximizar la cosecha de energía en instalaciones residenciales con tecnología de conmutación de súper alta frecuencia.</p>
-            
-            <div class="caracteristicas-grid">
-                <div class="caracteristica-item">
-                    <div>
-                        <strong>Eficiencia Máxima</strong>
-                        <small>98.1%</small>
-                    </div>
-                </div>
-                <div class="caracteristica-item">
-                    <div>
-                        <strong>Protección IP</strong>
-                        <small>Grado IP65</small>
-                    </div>
-                </div>
-                <div class="caracteristica-item">
-                    <div>
-                        <strong>Doble MPPT</strong>
-                        <small>Algoritmo Preciso</small>
-                    </div>
-                </div>
-                <div class="caracteristica-item">
-                    <div>
-                        <strong>Monitoreo</strong>
-                        <small>WiFi / GPRS App</small>
-                    </div>
-                </div>
-            </div>
-
-        </div>
-    </div>
-
-    <!-- Paneles Solares -->
-    <div class="paneles-section">
-        <h2>Paneles Solares (Tier 1)</h2>
+        <p>Inversor de alta fidelidad diseñado para maximizar la cosecha de energía en instalaciones residenciales con tecnología de conmutación de súper alta frecuencia.</p>
         
-        <!-- Panel Solar JA Solar -->
-        <div class="inversor-destacado" style="margin-top: 40px;">
-            <div class="inversor-imagen">
-                <img src="Captura de pantalla 2026-02-07 010937.png" alt="JA Solar 585W" style="width: 100%;">
+        <div class="specs-grid">
+            <div class="spec-item">
+                <i class="fas fa-chart-line"></i>
+                <strong>Eficiencia</strong>
+                <span>98.1%</span>
             </div>
-            <div class="inversor-info">
-                <span class="badge-tecnologia">TECNOLOGÍA HALF-CUT</span>
-                <h3>JA Solar JAM78S30-585/MR</h3>
-                <p><strong>Potencia:</strong> 585Wp | <strong>Eficiencia:</strong> 20.9%</p>
-                
-                <ul class="producto-lista" style="margin-top: 15px;">
-                    <li><i class="fas fa-check"></i> Tecnología de media celda (Half-cut) para mejor rendimiento en sombras.</li>
-                    <li><i class="fas fa-check"></i> Garantía de potencia lineal de 25 años.</li>
-                    <li><i class="fas fa-check"></i> Alta resistencia a la degradación inducida por potencial (PID).</li>
-                </ul>
+            <div class="spec-item">
+                <i class="fas fa-shield-alt"></i>
+                <strong>Protección</strong>
+                <span>Grado IP65</span>
             </div>
-        </div>
-        
-        <h3 style="text-align: center; color: #008080; font-size: 1.5rem; margin: 50px 0 30px;">Otros Paneles Certificados</h3>
-        
-        <div class="paneles-grid">
-            <div class="panel-card">
-                <strong>JA SOLAR</strong>
-                <p>Modelo: JAM78S30-585/MR</p>
+            <div class="spec-item">
+                <i class="fas fa-project-diagram"></i>
+                <strong>MPPT</strong>
+                <span>Doble Algoritmo</span>
             </div>
-            <div class="panel-card">
-                <strong>JINKO SOLAR</strong>
-                <p>Tecnología N-Type de alta eficiencia.</p>
-            </div>
-            <div class="panel-card">
-                <strong>LONGI</strong>
-                <p>Líder mundial en paneles monocristalinos.</p>
-            </div>
-            <div class="panel-card">
-                <strong>TRINA SOLAR</strong>
-                <p>Máxima potencia y durabilidad.</p>
+            <div class="spec-item">
+                <i class="fas fa-wifi"></i>
+                <strong>Monitoreo</strong>
+                <span>App WiFi / GPRS</span>
             </div>
         </div>
     </div>
 
-    <!-- Formulario de Cotización -->
-    <section id="cotizar" style="padding: 80px 20px; background-color: #f4f7f6; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">
-        <div style="max-width: 650px; margin: 0 auto; background: #ffffff; padding: 40px; border-radius: 25px; box-shadow: 0 15px 35px rgba(0,0,0,0.1);">
-            
-            <div style="text-align: center; margin-bottom: 35px;">
-                <h2 style="color: #008080; font-size: 2.2rem; margin-bottom: 10px; font-weight: 800;">¿Quieres una cotización?</h2>
-                <p style="color: #666; font-size: 1.1rem; line-height: 1.6;">Calculamos tu ahorro energético sin compromiso. Completa el formulario y nuestro equipo en Panamá te contactará.</p>
+    <div class="ficha-producto">
+        <div class="header-ficha">
+            <div>
+                <span class="badge-tecnologia">TECNOLOGÍA N-TYPE TOPCON</span>
+                <h3>Trina Vertex N</h3>
             </div>
-
-            <form action="https://formspree.io/f/TU_ID_AQUÍ" method="POST" style="display: flex; flex-direction: column; gap: 20px;">
-                
-                <div style="display: flex; flex-direction: column; gap: 8px;">
-                    <label style="font-weight: 600; color: #333; margin-left: 5px;">Nombre Completo</label>
-                    <input type="text" name="nombre" placeholder="Nombre y Apellido" required 
-                           style="padding: 14px 18px; border: 2px solid #eee; border-radius: 12px; outline: none; font-size: 1rem; transition: border-color 0.3s;">
-                </div>
-
-                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px;">
-                    <div style="display: flex; flex-direction: column; gap: 8px;">
-                        <label style="font-weight: 600; color: #333; margin-left: 5px;">WhatsApp</label>
-                        <input type="tel" name="whatsapp" placeholder="6000-0000" required 
-                               style="padding: 14px 18px; border: 2px solid #eee; border-radius: 12px; font-size: 1rem;">
-                    </div>
-                    <div style="display: flex; flex-direction: column; gap: 8px;">
-                        <label style="font-weight: 600; color: #333; margin-left: 5px;">Provincia</label>
-                        <select name="provincia" style="padding: 14px 18px; border: 2px solid #eee; border-radius: 12px; font-size: 1rem; background: white; appearance: none; cursor: pointer;">
-                            <option>Panamá</option>
-                            <option>Panamá Oeste</option>
-                            <option>Coclé</option>
-                            <option>Chiriquí</option>
-                            <option>Veraguas</option>
-                            <option>Azuero</option>
-                            <option>Colón</option>
-                        </select>
-                    </div>
-                </div>
-
-                <div style="display: flex; flex-direction: column; gap: 8px;">
-                    <label style="font-weight: 600; color: #333; margin-left: 5px;">Gasto Mensual Promedio de Luz (USD $)</label>
-                    <input type="number" name="gasto_luz_usd" placeholder="Ej: 150" required 
-                           style="padding: 14px 18px; border: 2px solid #eee; border-radius: 12px; font-size: 1rem;">
-                </div>
-
-                <div style="display: flex; flex-direction: column; gap: 8px;">
-                    <label style="font-weight: 600; color: #333; margin-left: 5px;">Mensaje o Consulta</label>
-                    <textarea name="mensaje" rows="4" placeholder="¿En qué zona de Panamá sería la instalación?" 
-                              style="padding: 14px 18px; border: 2px solid #eee; border-radius: 12px; font-size: 1rem; resize: none;"></textarea>
-                </div>
-
-                <button type="submit" 
-                        style="background: #008080; color: white; border: none; padding: 18px; border-radius: 12px; font-size: 1.1rem; font-weight: bold; cursor: pointer; transition: 0.3s; box-shadow: 0 4px 12px rgba(46, 125, 50, 0.2); margin-top: 10px;">
-                    Enviar Solicitud de Cotización
-                </button>
-
-                <p style="text-align: center; font-size: 0.85rem; color: #999; margin-top: 5px;">
-                    🔒 Tus datos están seguros con nosotros bajo las leyes de Panamá.
-                </p>
-            </form>
+            <i class="fas fa-solar-panel" style="font-size: 2.5rem; color: #2e7d32;"></i>
         </div>
-    </section>
+        <p>Módulo de alta confiabilidad y rendimiento excepcional. El diseño de doble cristal bifacial permite generar hasta un 30% de energía adicional desde la parte trasera.</p>
+        
+        <div class="specs-grid">
+            <div class="spec-item">
+                <i class="fas fa-bolt"></i>
+                <strong>Potencia Max</strong>
+                <span>710 Wp</span>
+            </div>
+            <div class="spec-item">
+                <i class="fas fa-percentage"></i>
+                <strong>Eficiencia</strong>
+                <span>22.9%</span>
+            </div>
+            <div class="spec-item">
+                <i class="fas fa-calendar-alt"></i>
+                <strong>Garantía</strong>
+                <span>25 Años</span>
+            </div>
+            <div class="spec-item">
+                <i class="fas fa-temperature-low"></i>
+                <strong>Coef. Temp</strong>
+                <span>-0.30%/°C</span>
+            </div>
+        </div>
+    </div>
 
-    <!-- Footer -->
+    <h2 style="text-align: center; color: #333; margin: 50px 0 20px;">Otros Módulos Disponibles</h2>
+
+    <div class="paneles-grid">
+        <div class="panel-simple-card">
+            <i class="fas fa-layer-group"></i>
+            <h4>JA Solar JAM72D42</h4>
+            <p>625W - 650W | N-Type Bifacial</p>
+        </div>
+        <div class="panel-simple-card">
+            <i class="fas fa-sun"></i>
+            <h4>JA Deep Blue 3.0</h4>
+            <p>585W - 610W | Células PERC</p>
+        </div>
+        <div class="panel-simple-card">
+            <i class="fas fa-gem"></i>
+            <h4>Jinko Solar</h4>
+            <p>N-Type de alta eficiencia</p>
+        </div>
+    </div>
+
     <footer class="footer">
         <div class="footer-container">
             <div class="footer-section">
-                <h3>Quiénes Somos</h3>
-                <p>Eco Energy Solutions es una empresa comprometida con el futuro sostenible.</p>
-            </div>
-            <div class="footer-section">
-                <h3>Síguenos</h3>
-                <div class="social-links">
-                    <a href="https://instagram.com" target="_blank" class="social-link">
-                        <i class="fab fa-instagram social-icon"></i>
-                        Instagram
-                    </a>
-                    <a href="https://facebook.com" target="_blank" class="social-link">
-                        <i class="fab fa-facebook-f social-icon"></i>
-                        Facebook
-                    </a>
-                    <a href="https://wa.me/50700000000" target="_blank" class="social-link">
-                        <i class="fab fa-whatsapp social-icon"></i>
-                        WhatsApp
-                    </a>
-                </div>
+                <h3>Eco Energy Solutions</h3>
+                <p>Comprometidos con el futuro sostenible de Panamá.</p>
             </div>
             <div class="footer-section">
                 <h3>Contacto</h3>

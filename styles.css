@@ -22,3 +22,36 @@ p {
     font-size: 1.2rem;
     color: #555;
 }
+
+/* Estilo refinado para Financiamiento Directo */
+.tarjeta-financiamiento {
+    position: relative;
+    background: #ffffff;
+    transition: all 0.3s ease;
+}
+
+.tarjeta-financiamiento:hover {
+    background: #f9fdf9;
+    border-color: #2e7d32;
+}
+
+.etiqueta-exclusivo {
+    position: absolute;
+    top: -12px;
+    left: 50%;
+    transform: translateX(-50%);
+    color: #ffffff;
+    font-weight: bold;
+    font-size: 0.75rem;
+    padding: 4px 18px;
+    border-radius: 4px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.texto-destacado {
+    color: #1b5e20;
+    font-size: 1.1rem;
+    margin-bottom: 10px;
+    display: block;
+}
