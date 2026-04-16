@@ -1,7 +1,7 @@
 // Script principal para Eco Energy
 
 document.addEventListener('DOMContentLoaded', function() {
-    console.log('Eco Energy Solución cargada correctamente');
+    console.log('Eco Energy Solutions cargada correctamente');
     
     // Inicializar Swiper
     const swiper = new Swiper('.hero-swiper', {
