@@ -20,17 +20,22 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
     
-    // Navbar scroll effect
+    // Navbar hide on scroll effect
     const navbar = document.querySelector('.navbar');
-    window.addEventListener('scroll', function() {
-        if (window.scrollY > 100) {
-            navbar.style.background = 'white';
-            navbar.style.padding = '0.8rem 0';
-        } else {
-            navbar.style.background = 'white';
-            navbar.style.padding = '1rem 0';
-        }
-    });
+    if (navbar && !navbar.classList.contains('navbar-static')) {
+        let lastScrollTop = 0;
+        window.addEventListener('scroll', function() {
+            let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+            if (scrollTop > lastScrollTop) {
+                // Scrolling down
+                navbar.style.top = '-100px';
+            } else {
+                // Scrolling up
+                navbar.style.top = '0';
+            }
+            lastScrollTop = scrollTop <= 0 ? 0 : scrollTop; // For Mobile or negative scrolling
+        });
+    }
     
     // Smooth scroll para los enlaces del navbar
     const navLinks = document.querySelectorAll('.nav-link');

@@ -38,6 +38,11 @@
             margin-bottom: 30px;
         }
 
+        .calculadora-desc {
+            color: #666;
+            font-size: 1.2rem;
+        }
+
         /* Estilos aislados del Dashboard */
         .dashboard {
             background-color: var(--panel-bg);
@@ -99,6 +104,16 @@
         }
         .input-group input:focus { outline: none; border-color: var(--accent-blue); }
 
+        @media (max-width: 768px) {
+            .chart-container {
+                padding: 10px 15px 0 5px;
+                gap: 2px;
+            }
+            .bar-label {
+                font-size: 0.65rem;
+            }
+        }
+
         @media (max-width: 700px) {
             .metrics-grid { grid-template-columns: repeat(2, 1fr); }
             .inputs-grid { grid-template-columns: repeat(3, 1fr); }
@@ -109,10 +124,10 @@
 </head>
 <body>
 
-    <nav class="navbar">
+    <nav class="navbar navbar-static">
         <div class="navbar-container">
             <a href="index.html" class="navbar-logo">
-                <img src="Gemini_Generated_Image_jjgrg3jjgrg3jjgr.png" alt="Eco Energy Logo" class="logo-img">
+                <img src="logo-ecoenergy.jpeg" alt="Logo Eco Energy Solutions" class="logo-img">
             </a>
             <ul class="navbar-menu">
                 <li><a href="index.html" class="nav-link">Inicio</a></li>
@@ -125,7 +140,7 @@
     <section class="calculadora-wrapper">
         <div class="calculadora-titulo">
             <h1>Simulador de Ahorro Solar</h1>
-            <p>Ingresa los datos de tu recibo (ENSA / Naturgy) y descubre cuánto puedes ahorrar.</p>
+            <p class="calculadora-desc">Ingresa los datos de tu recibo (ENSA / Naturgy) y descubre cuánto puedes ahorrar.</p>
         </div>
 
         <div class="dashboard">
@@ -187,19 +202,19 @@
             <div class="footer-section">
                 <h3>Síguenos</h3>
                 <div class="social-links">
-                    <a href="https://instagram.com" target="_blank" class="social-link"><i class="fab fa-instagram social-icon"></i> Instagram</a>
-                    <a href="https://facebook.com" target="_blank" class="social-link"><i class="fab fa-facebook-f social-icon"></i> Facebook</a>
-                    <a href="https://wa.me/50700000000" target="_blank" class="social-link"><i class="fab fa-whatsapp social-icon"></i> WhatsApp</a>
+                    <a href="https://www.instagram.com/ecoenergysolutionspty/" target="_blank" class="social-link"><i class="fab fa-instagram social-icon"></i> Instagram</a>
+                    <a href="https://www.facebook.com/search/top?q=Eco%20Energy%20Solutions%20Panama" target="_blank" class="social-link"><i class="fab fa-facebook-f social-icon"></i> Facebook</a>
+                    <a href="https://wa.me/50769684207" target="_blank" class="social-link"><i class="fab fa-whatsapp social-icon"></i> WhatsApp</a>
                 </div>
             </div>
             <div class="footer-section">
                 <h3>Contacto</h3>
-                <p>info@ecoenergysolucion.com</p>
+                <p>info@ecoenergysolutionspa.com</p>
                 <p>+507 0000-0000</p>
             </div>
         </div>
         <div class="footer-bottom">
-            <p>&copy; 2024 Eco Energy Solutions. Todos los derechos reservados.</p>
+            <p>&copy; 2026 Eco Energy Solutions. Todos los derechos reservados.</p>
         </div>
     </footer>
 

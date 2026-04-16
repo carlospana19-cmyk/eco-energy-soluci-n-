@@ -10,8 +10,13 @@
     background: white;
     backdrop-filter: blur(10px);
     padding: 0rem 0;
-    transition: all 0.3s ease;
+    transition: top 0.3s;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.navbar-static {
+    position: static;
+    box-shadow: none;
 }
 
 .navbar-container {
@@ -31,6 +36,7 @@
 
 .logo-img {
     height: 100px;
+    max-height: 75px;
     width: auto;
     transition: transform 0.3s ease;
 }
@@ -151,7 +157,8 @@
 .hero-subtitle {
     font-size: 1.8rem;
     font-weight: 300;
-    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+    color: #ffffff;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
     opacity: 0;
     transform: translateY(30px);
     animation: fadeInUp 1s ease 0.3s forwards;
@@ -413,7 +420,11 @@
     .nosotros-title {
         font-size: 1.8rem;
     }
-    
+
+    .nosotros-text {
+        text-align: center;
+    }
+
     .nosotros-stats {
         justify-content: center;
     }
