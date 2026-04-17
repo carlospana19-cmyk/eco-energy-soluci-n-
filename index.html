@@ -123,15 +123,15 @@
     <!-- Sección Contacto -->
     <section id="contacto" class="contacto-section">
         <h2 class="section-title">Solicita una Cotización</h2>
-        <form class="contacto-form">
+        <form action="https://formspree.io/f/mlgajvqa" method="POST" class="contacto-form">
             <div class="form-group">
-                <input type="text" placeholder="Tu Nombre" class="form-input">
+                <input type="text" name="nombre" placeholder="Tu Nombre" class="form-input" required>
             </div>
             <div class="form-group">
-                <input type="email" placeholder="Correo Electrónico" class="form-input">
+                <input type="email" name="email" placeholder="Correo Electrónico" class="form-input" required>
             </div>
             <div class="form-group">
-                <textarea placeholder="Cuéntanos sobre tu proyecto" class="form-input form-textarea"></textarea>
+                <textarea name="mensaje" placeholder="Cuéntanos sobre tu proyecto" class="form-input form-textarea" required></textarea>
             </div>
             <button type="submit" class="form-button">Enviar Mensaje</button>
         </form>
@@ -164,7 +164,7 @@
             <div class="footer-section">
                 <h3>Contacto</h3>
                 <p>info@ecoenergysolutionspa.com</p>
-                <p>+507 0000-0000</p>
+                <p>+507 6968-4207</p>
             </div>
         </div>
         <div class="footer-bottom">
