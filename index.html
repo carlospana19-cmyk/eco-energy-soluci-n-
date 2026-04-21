@@ -68,22 +68,22 @@
                 <h3>Mantenimiento</h3>
                 <p>Aseguramos que tus equipos funcionen al 100% durante todo el año.</p>
             </div>
-        <div class="servicio-card">
-            <div class="servicio-icon">
-                <i class="fas fa-bolt"></i>
+            <div class="servicio-card">
+                <div class="servicio-icon">
+                    <i class="fas fa-bolt"></i>
+                </div>
+                <h3>Eficiencia</h3>
+                <p>Analizamos tu consumo para encontrar las mejores oportunidades de ahorro.</p>
             </div>
-            <h3>Eficiencia</h3>
-            <p>Analizamos tu consumo para encontrar las mejores oportunidades de ahorro.</p>
-        </div>
-        <div class="servicio-card tarjeta-financiamiento">
-            <div class="servicio-icon">
-                <i class="fas fa-handshake"></i>
+            <div class="servicio-card tarjeta-financiamiento">
+                <div class="servicio-icon">
+                    <i class="fas fa-handshake"></i>
+                </div>
+                <h3>Suscripción Directo</h3>
+                <p class="texto-destacado"><strong>Crédito propio de Eco Energy Solutions.</strong></p>
+                <p>Sin bancos ni intermediarios. Te ofrecemos planes de pago flexibles gestionados directamente por nosotros para que tu inversión se pague sola con el ahorro generado.</p>
             </div>
-            <h3>Suscripción Directo</h3>
-            <p class="texto-destacado"><strong>Crédito propio de Eco Energy Solutions.</strong></p>
-            <p>Sin bancos ni intermediarios. Te ofrecemos planes de pago flexibles gestionados directamente por nosotros para que tu inversión se pague sola con el ahorro generado.</p>
         </div>
-    </div>
     </section>
 
     <!-- Sección Quiénes Somos -->
@@ -123,13 +123,15 @@
     <!-- Sección Contacto -->
     <section id="contacto" class="contacto-section">
         <h2 class="section-title">Solicita una Cotización</h2>
-        <form action="https://formspree.io/f/mlgajvqa" method="POST" class="contacto-form">
-            <input type="hidden" name="_next" value="https://www.ecoenergysolutionspa.com/gracias">
+        <form id="contacto-form" action="https://formspree.io/f/mlgajvqa" method="POST" class="contacto-form">
             <div class="form-group">
                 <input type="text" name="nombre" placeholder="Tu Nombre" class="form-input" required>
             </div>
             <div class="form-group">
                 <input type="email" name="email" placeholder="Correo Electrónico" class="form-input" required>
+            </div>
+            <div class="form-group">
+                <input type="tel" name="telefono" placeholder="Número de Teléfono" class="form-input" required>
             </div>
             <div class="form-group">
                 <textarea name="mensaje" placeholder="Cuéntanos sobre tu proyecto" class="form-input form-textarea" required></textarea>
@@ -177,3 +179,4 @@
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
 </body>
 </html>
+

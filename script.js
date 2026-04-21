@@ -57,3 +57,34 @@ document.addEventListener('DOMContentLoaded', function() {
     
     console.log('Eco Energy - Energia limpia para el mundo');
 });
+
+// Interceptar formulario de contacto
+const formContacto = document.getElementById('contacto-form');
+if (formContacto) {
+    formContacto.addEventListener('submit', async function(event) {
+        event.preventDefault(); // Evita que Formspree abra su página
+        const boton = formContacto.querySelector('button[type="submit"]');
+        boton.innerText = 'Enviando...'; // Da feedback al usuario
+        
+        const data = new FormData(event.target);
+        try {
+            const response = await fetch(event.target.action, {
+                method: formContacto.method,
+                body: data,
+                headers: { 'Accept': 'application/json' }
+            });
+            
+            if (response.ok) {
+                // Redirección exitosa usando JavaScript
+                window.location.href = '/gracias.html';
+            } else {
+                boton.innerText = 'Error al enviar';
+                alert('Hubo un problema al enviar tu mensaje. Inténtalo de nuevo.');
+            }
+        } catch (error) {
+            boton.innerText = 'Error al enviar';
+            alert('Hubo un problema de conexión.');
+        }
+    });
+}
+
