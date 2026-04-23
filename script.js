@@ -19,7 +19,24 @@ document.addEventListener('DOMContentLoaded', function() {
             crossFade: true
         }
     });
-    
+
+    // Inicializar Swiper para Aliados
+    const aliadosSwiper = new Swiper('.aliados-swiper', {
+        loop: true,
+        autoplay: {
+            delay: 3000,
+            disableOnInteraction: false,
+        },
+        slidesPerView: 2,
+        spaceBetween: 20,
+        breakpoints: {
+            768: {
+                slidesPerView: 3,
+                spaceBetween: 30,
+            }
+        }
+    });
+
     // Navbar hide on scroll effect
     const navbar = document.querySelector('.navbar');
     if (navbar && !navbar.classList.contains('navbar-static')) {

@@ -8,119 +8,6 @@
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="home.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    
-    <style>
-        /* Variables exclusivas para el tablero de la calculadora */
-        :root {
-            --panel-bg: #1e1e1e;
-            --text-main: #e0e0e0;
-            --text-muted: #9e9e9e;
-            --accent-blue: #2196f3;
-            --accent-green: #4caf50;
-            --accent-gold: #ffc107;
-            --accent-red: #ff5252;
-            --border-color: #333;
-        }
-
-        /* Sección que envuelve la calculadora para separarla del navbar */
-       .calculadora-wrapper {
-            padding: 120px 20px 80px; 
-            background-color: #f4f4f4; 
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            min-height: 80vh;
-        }
-
-        .calculadora-titulo {
-            text-align: center;
-            color: #2e7d32;
-            margin-bottom: 30px;
-        }
-
-        .calculadora-desc {
-            color: #666;
-            font-size: 1.2rem;
-        }
-
-        /* Estilos aislados del Dashboard */
-        .dashboard {
-            background-color: var(--panel-bg);
-            color: var(--text-main);
-            border-radius: 16px;
-            padding: 25px;
-            max-width: 900px;
-            width: 100%;
-            box-shadow: 0 15px 35px rgba(0,0,0,0.15);
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        }
-
-        .dashboard input { font-family: inherit; }
-
-        .tarifa-section {
-            display: flex; justify-content: space-between; align-items: center;
-            background: #252525; padding: 15px 20px; border-radius: 10px;
-        }
-
-        .input-box { display: flex; flex-direction: column; gap: 5px; }
-        .input-box label { font-size: 0.85rem; color: var(--text-muted); font-weight: bold;}
-        .input-box input {
-            background: #121212; border: 1px solid var(--border-color); color: white;
-            padding: 8px 12px; border-radius: 5px; font-size: 1.1rem; width: 120px;
-        }
-        .input-box input:focus { outline: none; border-color: var(--accent-gold); color: white; }
-
-        .tarifa-result { text-align: right; }
-        .tarifa-result span { display: block; font-size: 0.85rem; color: var(--text-muted); text-transform: uppercase;}
-        .tarifa-result strong { font-size: 1.8rem; color: #eee; }
-
-        .metrics-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 15px; margin-bottom: 25px; }
-        .metric-card {
-            background: #2a2a2a; padding: 15px; border-radius: 8px; text-align: center;
-            border-top: 3px solid var(--accent-blue); display: flex; flex-direction: column; justify-content: center;
-        }
-        .metric-card.money { border-top-color: var(--accent-green); background: rgba(76, 175, 80, 0.05); }
-
-        .metric-title { font-size: 0.75rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 8px;}
-        .metric-value { font-size: 1.4rem; font-weight: bold; }
-        .money .metric-value { color: var(--accent-green); }
-
-        .chart-container {
-            height: 180px; display: flex; align-items: flex-end; justify-content: space-between;
-            padding: 10px 10px 0 10px; border-bottom: 2px solid var(--border-color); margin-bottom: 15px; gap: 5px;
-        }
-
-        .bar-wrapper { flex: 1; display: flex; flex-direction: column; align-items: center; height: 100%; justify-content: flex-end; }
-        .bar {
-            width: 75%; background: linear-gradient(to top, #1976d2, #42a5f5);
-            border-radius: 3px 3px 0 0; transition: height 0.4s ease; min-height: 2px;
-        }
-        .bar-label { margin-top: 8px; font-size: 0.75rem; color: var(--text-muted); }
-
-        .inputs-grid { display: grid; grid-template-columns: repeat(6, 1fr); gap: 10px; margin-top: 10px; }
-        .input-group input {
-            width: 100%; background: #252525; border: 1px solid var(--border-color); color: white;
-            padding: 8px 5px; text-align: center; border-radius: 4px; box-sizing: border-box;
-        }
-        .input-group input:focus { outline: none; border-color: var(--accent-blue); }
-
-        @media (max-width: 768px) {
-            .chart-container {
-                padding: 10px 15px 0 5px;
-                gap: 2px;
-            }
-            .bar-label {
-                font-size: 0.65rem;
-            }
-        }
-
-        @media (max-width: 700px) {
-            .metrics-grid { grid-template-columns: repeat(2, 1fr); }
-            .inputs-grid { grid-template-columns: repeat(3, 1fr); }
-            .tarifa-section { flex-direction: column; align-items: flex-start; }
-            .tarifa-result { text-align: left; margin-top: 10px; }
-        }
-    </style>
 </head>
 <body>
 
@@ -139,57 +26,62 @@
 
     <section class="calculadora-wrapper">
         <div class="calculadora-titulo">
-            <h1>Simulador de Ahorro Solar</h1>
-            <p class="calculadora-desc">Ingresa los datos de tu recibo (ENSA / Naturgy) y descubre cuánto puedes ahorrar.</p>
+            <h1>El Poder del Sol, Sin Deudas</h1>
+            <p class="calculadora-desc">Descubre cómo cambiar tu factura infinita por un equipo propio en 8 años, con $0 de inversión inicial.</p>
         </div>
 
-        <div class="dashboard">
-            <div class="tarifa-section">
-                <div class="input-box">
-                    <label>Monto de la Factura ($)</label>
-                    <input type="number" id="facMonto" placeholder="Ej. 120.50" step="0.01" oninput="calcular()">
+        <div class="simulador-container">
+            <label for="monthly-bill">Tu pago mensual actual de compañía eléctrica ($):</label>
+            <input type="number" id="monthly-bill" placeholder="Ej. 150" min="50" max="600" step="10" value="150">
+            <button type="button" class="btn-calcular" onclick="calcularAhorro()">Calcular Mi Suscripción</button>
+
+            <div class="columns-container" id="columns-container" style="display: none;">
+                <div class="status-quo-column">
+                    <div class="column-title">Seguir con la Red</div>
+                    <div class="column-value" id="status-quo-value">$150/mes</div>
+                    <p>Gasto infinito</p>
+                    <p>Sujeto a alzas de tarifa</p>
+                    <p>0% propiedad</p>
                 </div>
-                <div class="input-box">
-                    <label>Consumo de la Factura (kWh)</label>
-                    <input type="number" id="facKwh" placeholder="Ej. 650" step="1" oninput="calcular()">
-                </div>
-                <div class="tarifa-result">
-                    <span>Precio Exacto por kWh</span>
-                    <strong id="lblTarifa">$0.000</strong>
+                <div class="eco-column">
+                    <div class="column-title">Modelo Suscripción EcoEnergy</div>
+                    <div class="column-value" id="eco-value">$148/mes</div>
+                    <p>Cuota similar a tu factura</p>
+                    <p>$0 inversión inicial</p>
+                    <p>Equipo 100% tuyo en año 8</p>
                 </div>
             </div>
+        </div>
 
-            <div class="metrics-grid">
-                <div class="metric-card">
-                    <div class="metric-title">Consumo Anual</div>
-                    <div class="metric-value" id="valAnual">0 <small>kWh</small></div>
-                </div>
-                <div class="metric-card">
-                    <div class="metric-title">Promedio Mensual</div>
-                    <div class="metric-value" id="valMensual">0 <small>kWh</small></div>
-                </div>
-                <div class="metric-card daily">
-                    <div class="metric-title">Consumo por Día</div>
-                    <div class="metric-value" id="valDiario">0 <small>kWh/día</small></div>
-                </div>
-                
-                <div class="metric-card money">
-                    <div class="metric-title">Pago Anual</div>
-                    <div class="metric-value" id="pagoAnual">$0.00</div>
-                </div>
-                <div class="metric-card money">
-                    <div class="metric-title">Pago Mensual</div>
-                    <div class="metric-value" id="pagoMensual">$0.00</div>
-                </div>
-                <div class="metric-card money daily">
-                    <div class="metric-title">Costo por Día</div>
-                    <div class="metric-value" id="pagoDiario">$0.00</div>
-                </div>
-            </div>
+        <table class="comparativa-table">
+            <thead>
+                <tr>
+                    <th></th>
+                    <th>Suscripción EcoEnergy</th>
+                    <th>Crédito Verde Bancario</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Inversión Inicial</td>
+                    <td class="eco-win">$0</td>
+                    <td class="banco-win">10%-20% de abono</td>
+                </tr>
+                <tr>
+                    <td>Mantenimiento</td>
+                    <td class="eco-win">Incluido al 100%</td>
+                    <td>Responsabilidad del cliente</td>
+                </tr>
+                <tr>
+                    <td>Trámites</td>
+                    <td class="eco-win">Nosotros nos encargamos</td>
+                    <td>Burocracia</td>
+                </tr>
+            </tbody>
+        </table>
 
-            <div class="chart-container" id="chart"></div>
-
-            <div class="inputs-grid" id="inputs"></div>
+        <div style="text-align: center; margin: 60px 0;">
+            <a href="index.html#contacto" class="cta-button" style="display: inline-block; max-width: 400px; font-size: 1.0rem;">Solicitar mi Suscripción con $0 Inicial</a>
         </div>
     </section>
 
@@ -219,66 +111,16 @@
     </footer>
 
     <script src="script.js"></script>
-    <script>
-        const meses = ['Ene', 'Feb', 'Mar', 'Abr', 'May', 'Jun', 'Jul', 'Ago', 'Sep', 'Oct', 'Nov', 'Dic'];
-        const chartContainer = document.getElementById('chart');
-        const inputsContainer = document.getElementById('inputs');
-
-        // Inicializar barras e inputs
-        meses.forEach((mes, i) => {
-            chartContainer.innerHTML += `
-                <div class="bar-wrapper">
-                    <div class="bar" id="bar-${i}" style="height: 0%"></div>
-                    <div class="bar-label">${mes}</div>
-                </div>
-            `;
-            inputsContainer.innerHTML += `
-                <div class="input-group">
-                    <input type="number" class="kwh-input" id="input-${i}" placeholder="${mes}" min="0" oninput="calcular()">
-                </div>
-            `;
-        });
-
-        function calcular() {
-            const facMonto = parseFloat(document.getElementById('facMonto').value) || 0;
-            const facKwh = parseFloat(document.getElementById('facKwh').value) || 0;
+        <script>
+        function calcularAhorro() {
+            const billInput = document.getElementById('monthly-bill');
+            const value = parseInt(billInput.value) || 0;
+            const cuota = Math.round(value * 0.99);
             
-            let tarifaEfectiva = 0;
-            if (facMonto > 0 && facKwh > 0) {
-                tarifaEfectiva = facMonto / facKwh;
-            }
-            document.getElementById('lblTarifa').innerText = `$${tarifaEfectiva.toFixed(4)}`;
-
-            const inputs = document.querySelectorAll('.kwh-input');
-            let valores = [];
-            let totalAnualKwh = 0;
-
-            inputs.forEach(input => {
-                let val = parseFloat(input.value) || 0;
-                valores.push(val);
-                totalAnualKwh += val;
-            });
-
-            const promMensualKwh = totalAnualKwh / 12;
-            const promDiarioKwh = totalAnualKwh / 365;
-
-            const pagoAnualTotal = totalAnualKwh * tarifaEfectiva;
-            const pagoMensualPromedio = pagoAnualTotal / 12;
-            const pagoDiarioPromedio = pagoAnualTotal / 365;
-
-            document.getElementById('valAnual').innerHTML = `${totalAnualKwh.toLocaleString('en-US', {maximumFractionDigits:0})} <small>kWh</small>`;
-            document.getElementById('valMensual').innerHTML = `${promMensualKwh.toLocaleString('en-US', {maximumFractionDigits:1})} <small>kWh</small>`;
-            document.getElementById('valDiario').innerHTML = `${promDiarioKwh.toLocaleString('en-US', {maximumFractionDigits:2})} <small>kWh</small>`;
+            document.getElementById('status-quo-value').textContent = `$${value}/mes`;
+            document.getElementById('eco-value').textContent = `$${cuota}/mes`;
             
-            document.getElementById('pagoAnual').innerText = `$${pagoAnualTotal.toLocaleString('en-US', {minimumFractionDigits:2, maximumFractionDigits:2})}`;
-            document.getElementById('pagoMensual').innerText = `$${pagoMensualPromedio.toLocaleString('en-US', {minimumFractionDigits:2, maximumFractionDigits:2})}`;
-            document.getElementById('pagoDiario').innerText = `$${pagoDiarioPromedio.toLocaleString('en-US', {minimumFractionDigits:2, maximumFractionDigits:2})}`;
-
-            const maxVal = Math.max(...valores, 1); 
-            valores.forEach((val, i) => {
-                const porcentaje = (val / maxVal) * 100;
-                document.getElementById(`bar-${i}`).style.height = `${porcentaje}%`;
-            });
+            document.getElementById('columns-container').style.display = 'flex';
         }
     </script>
 </body>

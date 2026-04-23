@@ -197,6 +197,42 @@
     color: #008080;
 }
 
+/* Sección Aliados */
+.aliados-section {
+    padding: 60px 20px;
+    text-align: center;
+    background-color: #f9f9f9;
+}
+
+.aliados-swiper {
+    width: 100%;
+    height: 150px;
+    display: flex;
+    align-items: center;
+    padding: 20px 0;
+}
+
+.aliados-swiper .swiper-wrapper {
+    align-items: center; /* Esto alinea las imágenes en línea recta */
+}
+
+.partner-logo {
+    width: 100%;
+    max-width: 250px; /* Hace los logos más grandes */
+    max-height: 120px; /* Limita la altura para que no se deformen */
+    object-fit: contain; /* Mantiene la proporción sin recortar */
+    filter: grayscale(100%);
+    opacity: 0.6;
+    transition: 0.3s;
+    mix-blend-mode: multiply; /* Truco para quitar el fondo blanco */
+    margin: 0 auto; /* Centra la imagen en su caja */
+    display: block;
+}
+.partner-logo:hover {
+    filter: grayscale(0%);
+    opacity: 1;
+}
+
 /* Sección Servicios */
 .servicios-section {
     padding: 60px 20px;
@@ -620,4 +656,432 @@
 .navbar-menu .btn-calcular:hover {
     background-color: #1b5e20;
     transform: translateY(-2px);
+}
+
+/* Ajuste de tamaño específico para igualar logos */
+img[alt="AB Corp"] {
+    transform: scale(1.6);
+}
+
+img[alt="Figuer"] {
+    transform: scale(2.4);
+}
+
+/* Nuevos estilos para Calculadora Rediseñada */
+.calculadora-form {
+    max-width: 500px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.simulador-container {
+    max-width: 600px;
+    margin: 40px auto;
+    text-align: center;
+}
+
+#monthly-bill {
+    width: 200px;
+    padding: 15px;
+    font-size: 1.5rem;
+    border: 2px solid #ddd;
+    border-radius: 10px;
+    text-align: center;
+}
+
+.btn-calcular {
+    background: #2e7d32;
+    color: white;
+    border: none;
+    padding: 15px 30px;
+    font-size: 1.2rem;
+    border-radius: 10px;
+    cursor: pointer;
+    margin-top: 20px;
+    font-weight: bold;
+}
+
+.btn-calcular:hover {
+    background: #1b5e20;
+}
+
+.columns-container {
+    display: flex;
+    gap: 30px;
+    margin: 40px 0;
+    justify-content: center;
+}
+
+.status-quo-column {
+    flex: 1;
+    background: #ffebee;
+    padding: 30px;
+    border-radius: 15px;
+    text-align: center;
+}
+
+.eco-column {
+    flex: 1;
+    background: #e8f5e8;
+    padding: 30px;
+    border-radius: 15px;
+    text-align: center;
+}
+
+.column-title {
+    font-size: 1.8rem;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+.column-value {
+    font-size: 2.5rem;
+    font-weight: 800;
+    color: #333;
+}
+
+.status-quo-column .column-title {
+    color: #d32f2f;
+}
+
+.eco-column .column-title {
+    color: #2e7d32;
+}
+
+.comparativa-table {
+    width: 100%;
+    max-width: 800px;
+    margin: 40px auto;
+    border-collapse: collapse;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    border-radius: 15px;
+    overflow: hidden;
+}
+
+.comparativa-table th {
+    background: #2e7d32;
+    color: white;
+    padding: 20px;
+    text-align: left;
+    font-weight: bold;
+}
+
+.comparativa-table td {
+    padding: 20px;
+    border-bottom: 1px solid #eee;
+}
+
+.comparativa-table tr:nth-child(even) {
+    background: #f9f9f9;
+}
+
+.eco-win {
+    font-weight: bold;
+    color: #2e7d32;
+}
+
+.banco-win {
+    color: #d32f2f;
+}
+
+/* Sección Cero Estrés - Beneficios */
+.cero-estres-section {
+    padding: 40px 20px;
+    background: linear-gradient(135deg, #f4f9f4, #e8f5e8);
+}
+
+.cero-estres-title {
+    text-align: center;
+    font-size: 2.8rem;
+    color: #008080;
+    margin-bottom: 60px;
+}
+
+.beneficio-icon {
+    font-size: 4rem;
+    color: #008080;
+    margin-bottom: 20px;
+}
+
+.beneficio-title {
+    font-size: 1.6rem;
+    color: #333333;
+    margin-bottom: 15px;
+    font-weight: bold;
+}
+
+.beneficios-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.beneficio-card {
+    background: white;
+    padding: 40px 30px;
+    border-radius: 20px;
+    box-shadow: 0 15px 35px rgba(0,0,0,0.08);
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.beneficio-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 25px 50px rgba(0,0,0,0.15);
+}
+
+.beneficio-icon {
+    font-size: 4rem;
+    color: #008080;
+    margin-bottom: 20px;
+}
+
+.beneficio-title {
+    font-size: 1.6rem;
+    color: #008080;
+    margin-bottom: 15px;
+    font-weight: bold;
+}
+
+.beneficio-text {
+    color: #555;
+    line-height: 1.6;
+    font-size: 1.1rem;
+}
+
+/* Sección FAQ */
+.faq-section {
+    padding: 80px 20px;
+    background: white;
+}
+
+.faq-title {
+    text-align: center;
+    font-size: 2.8rem;
+    color: #333;
+    margin-bottom: 50px;
+}
+
+.faq-list {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.faq-item {
+    border: 1px solid #eee;
+    border-radius: 12px;
+    margin-bottom: 20px;
+    overflow: hidden;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+}
+
+.faq-question {
+    background: #f8f9fa;
+    padding: 25px 30px;
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 1.2rem;
+    color: #333;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: background 0.3s ease;
+}
+
+.faq-question:hover {
+    background: #e9ecef;
+}
+
+.faq-question.active {
+    background: #2e7d32;
+    color: white;
+}
+
+.faq-arrow {
+    font-size: 1.4rem;
+    transition: transform 0.3s ease;
+}
+
+.faq-question.active .faq-arrow {
+    transform: rotate(180deg);
+}
+
+.faq-answer {
+    padding: 0 30px 25px;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease, padding 0.3s ease;
+    color: #666;
+    line-height: 1.6;
+}
+
+.faq-answer.active {
+    padding: 25px 30px;
+    max-height: 200px;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .cero-estres-title, .faq-title {
+        font-size: 2.2rem;
+    }
+    
+    .beneficios-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+    
+    .columns-container {
+        flex-direction: column;
+    }
+}
+
+#bill-slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    background: #2e7d32;
+    cursor: pointer;
+    box-shadow: 0 4px 8px rgba(46, 125, 50, 0.3);
+    transition: transform 0.2s;
+}
+
+#bill-slider::-webkit-slider-thumb:hover {
+    transform: scale(1.1);
+}
+
+#bill-slider::-moz-range-thumb {
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    background: #2e7d32;
+    cursor: pointer;
+    border: none;
+    box-shadow: 0 4px 8px rgba(46, 125, 50, 0.3);
+}
+
+#bill-value {
+    font-size: 4rem;
+    font-weight: bold;
+    color: #2e7d32;
+    margin: 20px 0;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+.slider-label {
+    font-size: 1.2rem;
+    color: #333;
+    margin-bottom: 10px;
+    font-weight: 500;
+}
+
+.results-card {
+    background: white;
+    border-radius: 20px;
+    padding: 40px;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+    margin-top: 40px;
+    border-top: 5px solid #2e7d32;
+}
+
+.comparison {
+    background: linear-gradient(135deg, #f9fef9, #e8f5e8);
+    border-left: 5px solid #2e7d32;
+    padding: 20px;
+    margin-bottom: 20px;
+    border-radius: 8px;
+}
+
+.comparison div {
+    font-size: 1.4rem;
+    margin-bottom: 10px;
+    font-weight: 600;
+    color: #333;
+}
+
+.comparison strong {
+    color: #2e7d32;
+}
+
+.plan-highlight {
+    font-size: 1.8rem;
+    color: #d32f2f;
+    font-weight: 700;
+    margin-bottom: 30px;
+    line-height: 1.4;
+    text-align: center;
+}
+
+.cta-button {
+    background: linear-gradient(135deg, #2e7d32, #4caf50);
+    color: white;
+    border: none;
+    padding: 18px 40px;
+    font-size: 1.3rem;
+    font-weight: bold;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    width: 100%;
+    box-shadow: 0 10px 20px rgba(46, 125, 50, 0.3);
+    text-decoration: none;
+    display: inline-block;
+    text-align: center;
+}
+
+.cta-button:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 15px 30px rgba(46, 125, 50, 0.4);
+    background: linear-gradient(135deg, #1b5e20, #2e7d32);
+}
+
+@media (max-width: 768px) {
+    #bill-value {
+        font-size: 3rem;
+    }
+    
+    .plan-price {
+        font-size: 2.5rem;
+    }
+    
+    .plan-highlight {
+        font-size: 1.5rem;
+    }
+    
+    .results-card {
+        padding: 30px 20px;
+        margin: 20px;
+    }
+}
+
+/* Botón Flotante WhatsApp */
+.whatsapp-flotante {
+    position: fixed;
+    width: 60px;
+    height: 60px;
+    bottom: 30px;
+    right: 30px;
+    background-color: #25d366;
+    color: #fff;
+    border-radius: 50%;
+    box-shadow: 2px 2px 15px rgba(0, 0, 0, 0.2);
+    z-index: 9999;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: transform 0.3s ease, background-color 0.3s ease;
+}
+
+.whatsapp-flotante:hover {
+    transform: scale(1.1);
+    background-color: #20b858;
+}
+
+.wa-icon {
+    width: 35px;
+    height: 35px;
 }
