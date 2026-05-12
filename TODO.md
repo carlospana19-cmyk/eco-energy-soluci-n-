@@ -1,12 +1,6 @@
-# TODO: Corregir Layout Espacio Blanco en Aliados Estratégicos
+## TODO - Hero video (index.html + home.css)
 
-## Pasos del Plan Aprobado:
-
-### 1. [COMPLETADO] Editar home.css
-   - ✓ Cambiar padding .aliados-section a 60px 20px
-   - ✓ Añadir height: 150px; display: flex; align-items: center; a .aliados-swiper
-   - ✓ Reducir padding .cero-estres-section a 40px 20px
-
-### 2. [COMPLETADO] Verificar cambios y completar
-
-Progreso: 2/2 completado
+- [x] Actualizar `index.html`: reemplazar todo el contenido dentro de `<header class="hero">` por un `<video>` (hero-video.mp4) + `.hero-overlay` + `.hero-content` con el texto original.
+- [x] Actualizar `home.css`: ajustar `.hero` (position relative, height 100vh, overflow hidden).
+- [x] Actualizar `home.css`: estilizar el `video` como fondo completo (`object-fit: cover`) y asegurar texto blanco y centrado sobre la capa oscura.
+- [x] Verificar en navegador que el video se ve completo y el texto es legible.
