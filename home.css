@@ -89,36 +89,59 @@
     width: 80%;
 }
 
-/* Hero Section with Swiper */
+/* Hero Section (Video) */
 .hero {
     position: relative;
     width: 100%;
     height: 100vh;
-    min-height: 600px;
     overflow: hidden;
 }
 
-.hero-swiper {
-    width: 100%;
-    height: 100%;
-}
-
-.hero-slide {
-    position: relative;
-    width: 100%;
-    height: 100%;
-}
-
-.slide-image {
+.hero-video {
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
+    object-fit: cover;
+    z-index: -2;
+    display: block !important;
 }
+
+.hero-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: -1;
+}
+
+.hero-content {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+    color: #fff;
+    padding: 2rem;
+    max-width: 800px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+}
+
+/* (Se mantienen estilos existentes para .hero-title y .hero-subtitle) */
+
+
+/* NOTA: secciones .hero-swiper/.hero-slide/.slide-image eliminadas por el uso de video en el hero */
+
+
+/* .hero-slide removed (hero now uses video background) */
+
+
+
 
 .hero-overlay {
     position: absolute;
@@ -157,12 +180,13 @@
 .hero-subtitle {
     font-size: 1.8rem;
     font-weight: 300;
-    color: #ffffff;
+    color: #fff;
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
     opacity: 0;
     transform: translateY(30px);
     animation: fadeInUp 1s ease 0.3s forwards;
 }
+
 
 @keyframes fadeInUp {
     to {
@@ -620,6 +644,11 @@
     .logo-img {
         height: 80px;
     }
+
+    /* Ajuste para que el Hero no quede oculto bajo el Navbar en móvil */
+    .hero-content {
+        padding-top: 120px;
+    }
     
     .hero-title {
         font-size: 2.5rem;
@@ -642,6 +671,7 @@
         grid-template-columns: 1fr;
     }
 }
+
 
 /* Botón de Calculadora en el Navbar */
 .navbar-menu .btn-calcular {
