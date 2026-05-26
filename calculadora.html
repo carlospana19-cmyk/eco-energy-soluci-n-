@@ -263,15 +263,15 @@ body{font-family:Arial, sans-serif;background:var(--bg);color:var(--ink);font-si
       </div>
     </div>
 
-    <!-- AHORRO 8 AÑOS -->
+    <!-- AHORRO 25 AÑOS -->
     <div class="ahorro-banner">
       <div class="ab-text">
-        <strong>Lo que te ahorras en 8 años</strong>
-        <p>Tu cuota mensual se paga sola con lo que dejas de pagarle a la eléctrica. Tú no pones nada extra.</p>
+        <strong>Lo que te ahorras en 25 años</strong>
+        <p>Durante 8 años tu cuota se paga con el ahorro de luz. Del año 9 al 25 la energía es completamente gratis — el equipo ya es tuyo.</p>
       </div>
       <div class="ab-num">
         <span id="r-ahorro8">—</span>
-        <small>ahorrados en 8 años</small>
+        <small>ahorrados en 25 años</small>
       </div>
     </div>
 
@@ -357,9 +357,8 @@ function calcular(){
   const bill = parseFloat(document.getElementById('bill').value) || 0;
   if(bill < 50) return;
 
-  // Descuento: 0% hasta $200, 10% arriba de $200
-  const DESCUENTO = bill > 200 ? 0.10 : 0;
-  const cuota      = Math.round(bill * (1 - DESCUENTO));
+  // Descuento fijo: el 95% de la factura
+  const cuota      = Math.round(bill * 0.95);
   const ahorroMes  = bill - cuota;
   const costoTotal = bill * RATIO_COST_PER_BILL;
 
@@ -369,15 +368,15 @@ function calcular(){
   document.getElementById('r-ahorro-mes').textContent = fmt(ahorroMes) + '/mes';
 
 // Ahorro acumulado 25 años
-  let ahorro8 = 0, totalRed25 = 0, totalEco25 = 0;
+  let ahorro25 = 0, totalRed25 = 0, totalEco25 = 0;
   for(let y = 1; y <= 25; y++){
     const redAnual   = bill * 12 * Math.pow(1 + TASA_ALZA, y - 1);
     totalRed25      += redAnual;
     const cuotaAnual = y <= ANOS_SUB ? cuota * 12 : 0;
     totalEco25      += cuotaAnual;
-    if(y <= ANOS_SUB) ahorro8 += (redAnual - cuotaAnual);
+    ahorro25 += (redAnual - cuotaAnual);
   }
-  document.getElementById('r-ahorro8').textContent = fmt(ahorro8);
+  document.getElementById('r-ahorro8').textContent = fmt(ahorro25);
 
   // Barras
 const maxVal = Math.max(totalRed25, totalEco25 + costoTotal);
@@ -386,7 +385,7 @@ document.getElementById('b-red-val').textContent=fmt(totalRed25);
 document.getElementById('b-eco-val').textContent=fmt(totalEco25 + costoTotal);
 
   // WA precargado
-  const msg = encodeURIComponent(`Hola, usé la calculadora de EcoEnergy. Mi factura es de ${fmt(bill)}/mes. Con EcoEnergy pagaría ${fmt(cuota)}/mes y ahorraría ${fmt(ahorro8)} en 8 años. ¿Me pueden enviar una propuesta?`);
+  const msg = encodeURIComponent(`Hola, usé la calculadora de EcoEnergy. Mi factura es de ${fmt(bill)}/mes. Con EcoEnergy pagaría ${fmt(cuota)}/mes y ahorraría ${fmt(ahorro25)} en 25 años. ¿Me pueden enviar una propuesta?`);
   document.getElementById('wa-btn').href = `https://wa.me/50769684207?text=${msg}`;
 
   // Mostrar resultado
