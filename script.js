@@ -3,37 +3,32 @@
 document.addEventListener('DOMContentLoaded', function() {
     console.log('Eco Energy Solutions cargada correctamente');
     
-    // Inicializar Swiper
-    const swiper = new Swiper('.hero-swiper', {
-        loop: true,
-        autoplay: {
-            delay: 5000,
-            disableOnInteraction: false,
-        },
-        pagination: {
-            el: '.swiper-pagination',
-            clickable: true,
-        },
-        effect: 'fade',
-        fadeEffect: {
-            crossFade: true
+    // Inicializar Swiper para Aliados SOLO EN MÓVIL
+    function initAliadosSwiper() {
+        if (window.innerWidth < 768 && !window.aliadosSwiperInstance) {
+            window.aliadosSwiperInstance = new Swiper('.aliados-swiper', {
+                loop: true,
+                autoplay: {
+                    delay: 3000,              // Cambia cada 3 segundos
+                    disableOnInteraction: false,
+                },
+                speed: 700,                   // Animación un poco más rápida
+                slidesPerView: 1.8,
+                spaceBetween: 20,
+                centeredSlides: false,
+            });
         }
-    });
+    }
 
-    // Inicializar Swiper para Aliados
-    const aliadosSwiper = new Swiper('.aliados-swiper', {
-        loop: true,
-        autoplay: {
-            delay: 3000,
-            disableOnInteraction: false,
-        },
-        slidesPerView: 2,
-        spaceBetween: 20,
-        breakpoints: {
-            768: {
-                slidesPerView: 3,
-                spaceBetween: 30,
-            }
+    initAliadosSwiper();
+
+    // Re-inicializar al cambiar de tamaño de pantalla
+    window.addEventListener('resize', () => {
+        if (window.innerWidth >= 768 && window.aliadosSwiperInstance) {
+            window.aliadosSwiperInstance.destroy(true, true);
+            window.aliadosSwiperInstance = null;
+        } else if (window.innerWidth < 768 && !window.aliadosSwiperInstance) {
+            initAliadosSwiper();
         }
     });
 
@@ -105,3 +100,29 @@ if (formContacto) {
     });
 }
 
+// Menú hamburguesa responsive
+const menuToggle = document.getElementById('menuToggle');
+const navbarMenu = document.querySelector('.navbar-menu');
+if (menuToggle) {
+  menuToggle.addEventListener('click', () => {
+    navbarMenu.classList.toggle('active');
+  });
+}
+
+// FAQ accordion
+document.querySelectorAll('.faq-pregunta').forEach(btn => {
+  btn.addEventListener('click', () => {
+    const item = btn.parentElement;
+    const isActive = item.classList.contains('active');
+    document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('active'));
+    if (!isActive) item.classList.add('active');
+  });
+});
+
+// Valores accordion - cada uno abre independiente (como la mayoría de FAQs modernas)
+document.querySelectorAll('.valor-header').forEach(btn => {
+  btn.addEventListener('click', () => {
+    const item = btn.parentElement;
+    item.classList.toggle('active');
+  });
+});

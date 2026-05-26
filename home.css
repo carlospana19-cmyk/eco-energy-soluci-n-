@@ -231,23 +231,27 @@
 .aliados-swiper {
     width: 100%;
     height: 150px;
-    display: flex;
-    align-items: center;
     padding: 20px 0;
 }
 
 .aliados-swiper .swiper-wrapper {
-    align-items: center; /* Esto alinea las imágenes en línea recta */
+    /* Swiper maneja el layout internamente - no forzar flex aquí */
+}
+
+.aliados-swiper .swiper-slide {
+    display: flex !important;
+    align-items: center;
+    justify-content: center;
 }
 
 .partner-logo {
     width: 100%;
-    max-width: 250px; /* Hace los logos más grandes */
-    max-height: 120px; /* Limita la altura para que no se deformen */
+    max-width: 300px; /* Hace los logos más grandes */
+    max-height: 150px; /* Limita la altura para que no se deformen */
     object-fit: contain; /* Mantiene la proporción sin recortar */
     filter: grayscale(100%);
     opacity: 0.6;
-    transition: 0.3s;
+    transition: 0.2s;
     mix-blend-mode: multiply; /* Truco para quitar el fondo blanco */
     margin: 0 auto; /* Centra la imagen en su caja */
     display: block;
@@ -1114,4 +1118,736 @@ img[alt="Figuer"] {
 .wa-icon {
     width: 35px;
     height: 35px;
+}
+
+/* ========================================
+   NUEVOS ESTILOS AGREGADOS - Eco Energy
+   ======================================== */
+
+/* 1. Botón CTA Hero */
+.btn-hero {
+    background-color: #2e7d32;
+    color: #ffffff;
+    padding: 14px 32px;
+    border-radius: 50px;
+    font-size: 1.1rem;
+    font-weight: bold;
+    text-decoration: none;
+    display: inline-block;
+    margin-top: 30px;
+    transition: background-color 0.3s ease;
+}
+
+.btn-hero:hover {
+    background-color: #388e3c;
+}
+
+/* 2. Menú Hamburguesa Responsive */
+.menu-toggle {
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 5px;
+}
+
+.menu-toggle span {
+    display: block;
+    width: 25px;
+    height: 2px;
+    background-color: #2e7d32;
+    transition: all 0.3s ease;
+}
+
+@media (max-width: 768px) {
+    .menu-toggle {
+        display: flex;
+    }
+
+    .navbar-menu {
+        display: none;
+        position: absolute;
+        top: 70px;
+        left: 0;
+        width: 100%;
+        background: white;
+        flex-direction: column;
+        padding: 20px;
+        box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        z-index: 999;
+    }
+
+    .navbar-menu.active {
+        display: flex;
+    }
+
+    .navbar-container {
+        position: relative;
+    }
+}
+
+/* 3. Misión, Visión y Valores */
+.mision-vision-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+    max-width: 1000px;
+    margin: 60px auto 0;
+    padding: 0 20px;
+}
+
+@media (max-width: 768px) {
+    .mision-vision-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+.mv-card {
+    background: #f9f9f9;
+    border-radius: 15px;
+    padding: 35px;
+    border-top: 4px solid #2e7d32;
+    text-align: center;
+}
+
+.mv-card i {
+    color: #2e7d32;
+    font-size: 2rem;
+    margin-bottom: 15px;
+    display: block;
+}
+
+.mv-card h3 {
+    color: #2e7d32;
+    margin-bottom: 15px;
+    font-size: 1.4rem;
+}
+
+.mv-card p {
+    color: #555;
+    line-height: 1.7;
+    font-size: 0.95rem;
+}
+
+.valores-section {
+    text-align: center;
+    margin-top: 60px;
+    padding: 0 20px;
+}
+
+.valores-title {
+    font-size: 1.8rem;
+    color: #333;
+    margin-bottom: 30px;
+}
+
+.valores-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+@media (max-width: 992px) {
+    .valores-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 768px) {
+    .valores-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+.valor-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    background: white;
+    padding: 18px 24px;
+    border-radius: 10px;
+    border: 1px solid #e8f5e9;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+}
+
+.valor-item i {
+    color: #2e7d32;
+    font-size: 1.3rem;
+}
+
+.valor-item span {
+    font-weight: 600;
+    color: #333;
+}
+
+/* 4. Testimonios */
+.testimonios-section {
+    background: #f9f9f9;
+    padding: 80px 20px;
+    text-align: center;
+}
+
+.section-subtitle {
+    color: #666;
+    margin-top: -20px;
+    margin-bottom: 40px;
+    font-size: 1.1rem;
+}
+
+.testimonios-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 25px;
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+@media (max-width: 768px) {
+    .testimonios-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+.testimonio-card {
+    background: white;
+    border-radius: 15px;
+    padding: 35px;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.07);
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    border-top: 3px solid #2e7d32;
+}
+
+.testimonio-estrellas {
+    color: #f9a825;
+    font-size: 1.3rem;
+    letter-spacing: 3px;
+}
+
+.testimonio-texto {
+    color: #555;
+    line-height: 1.7;
+    font-style: italic;
+    flex: 1;
+}
+
+.testimonio-autor {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.testimonio-autor strong {
+    display: block;
+    color: #333;
+}
+
+.testimonio-autor small {
+    color: #888;
+}
+
+.autor-avatar {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    background: #2e7d32;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    font-size: 0.9rem;
+    flex-shrink: 0;
+}
+
+/* 5. FAQ (nuevo accordion) */
+.faq-section {
+    padding: 80px 20px;
+    background: white;
+}
+
+.faq-container {
+    max-width: 800px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.faq-item {
+    border: 1px solid #e0e0e0;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.faq-pregunta {
+    width: 100%;
+    text-align: left;
+    padding: 20px 25px;
+    background: white;
+    border: none;
+    cursor: pointer;
+    font-size: 1rem;
+    font-weight: 600;
+    color: #333;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.faq-pregunta:hover {
+    background: #f9f9f9;
+}
+
+.faq-pregunta i {
+    color: #2e7d32;
+    transition: transform 0.3s ease;
+}
+
+.faq-respuesta {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.4s ease;
+}
+
+.faq-respuesta p {
+    padding: 0 25px 20px;
+    color: #555;
+    line-height: 1.7;
+    margin: 0;
+}
+
+.faq-item.active .faq-respuesta {
+    max-height: 200px;
+}
+
+.faq-item.active .faq-pregunta i {
+    transform: rotate(180deg);
+}
+
+/* ========================================
+   ALIADOS - Versión anterior que mostraba los 3 logos
+   (Tú ajustarás los tamaños)
+   ======================================== */
+
+.aliados-section {
+    overflow: visible;
+    text-align: center;
+}
+
+.aliados-swiper {
+    width: 100%;
+    max-width: 1000px;
+    margin: 0 auto;
+    height: 180px;
+    padding: 15px 0;
+}
+
+.aliados-swiper .swiper-wrapper {
+    align-items: center;
+}
+
+.aliados-swiper .swiper-slide {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    width: 220px !important;
+    padding: 0 15px;
+    opacity: 1 !important;
+    visibility: visible !important;
+}
+
+/* Logos - tamaño base (tú los ajustarás) */
+.aliados-swiper .partner-logo {
+    max-width: 190px;
+    max-height: 90px;
+    width: auto;
+    height: auto;
+    object-fit: contain;
+    display: block;
+    opacity: 0.9;
+    filter: grayscale(100%);
+    mix-blend-mode: normal;
+    margin: 0 auto;
+    transition: all 0.3s ease;
+}
+
+.aliados-swiper .partner-logo:hover {
+    opacity: 1;
+    filter: grayscale(0%);
+}
+
+/* Ajustes específicos (tú los puedes cambiar) */
+.aliados-swiper img[alt="AB Corp"] {
+    max-width: 170px;
+    transform: scale(1.3);
+}
+
+.aliados-swiper img[alt="Figuer"] {
+    max-width: 180px;
+    transform: scale(1.5);
+}
+
+.aliados-swiper img[alt="Kiz"] {
+    max-width: 165px;
+    transform: scale(1.1);
+}
+
+.aliados-swiper {
+    width: 100%;
+    max-width: 900px;
+    margin: 0 auto;
+    height: 280px;           /* Más alto para que entren los logos grandes */
+    padding: 15px 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.aliados-swiper .swiper-wrapper {
+    align-items: center;
+    width: 100%;
+}
+
+.aliados-swiper .swiper-slide {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    width: 100% !important;
+    height: 100%;
+    padding: 0;
+    opacity: 1 !important;
+    visibility: visible !important;
+}
+
+/* Logos grandes pero que sí se vean (tamaño impactante pero realista) */
+.aliados-swiper .partner-logo {
+    max-width: 280px;
+    max-height: 160px;
+    width: auto;
+    height: auto;
+    object-fit: contain;
+    display: block;
+    opacity: 0.95;
+    filter: grayscale(100%);
+    mix-blend-mode: normal;
+    margin: 0 auto;
+    transition: all 0.4s ease;
+}
+
+/* Hover */
+.aliados-swiper .partner-logo:hover {
+    opacity: 1;
+    filter: grayscale(0%);
+    transform: scale(1.08);
+}
+
+/* Ajustes específicos para equilibrio y buen tamaño */
+.aliados-swiper img[alt="AB Corp"] {
+    max-width: 250px;
+    transform: scale(1.45);
+}
+
+.aliados-swiper img[alt="Figuer"] {
+    max-width: 260px;
+    transform: scale(1.65);
+}
+
+.aliados-swiper img[alt="Kiz"] {
+    max-width: 245px;
+    transform: scale(1.25);
+}
+
+.aliados-swiper .swiper-wrapper {
+    align-items: center;
+}
+
+.aliados-swiper .swiper-slide {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    width: 100% !important;   /* Ocupa todo el ancho disponible */
+    padding: 0;
+    opacity: 1 !important;
+    visibility: visible !important;
+}
+
+/* Logos grandes e impactantes */
+.aliados-swiper .partner-logo {
+    max-width: 320px;
+    max-height: 130px;
+    width: auto;
+    height: auto;
+    object-fit: contain;
+    display: block;
+    opacity: 0.95;
+    filter: grayscale(100%);
+    mix-blend-mode: normal;
+    margin: 0 auto;
+    transition: all 0.4s ease;
+}
+
+/* Hover más notorio */
+.aliados-swiper .partner-logo:hover {
+    opacity: 1;
+    filter: grayscale(0%);
+    transform: scale(1.1);
+}
+
+/* Ajustes específicos para que queden bien equilibrados y grandes */
+.aliados-swiper img[alt="AB Corp"] {
+    max-width: 280px;
+    transform: scale(1.5);
+}
+
+.aliados-swiper img[alt="Figuer"] {
+    max-width: 300px;
+    transform: scale(1.8);
+}
+
+.aliados-swiper img[alt="Kiz"] {
+    max-width: 270px;
+    transform: scale(1.35);
+}
+
+.aliados-swiper {
+    width: 100%;
+    max-width: 1100px;
+    margin: 0 auto;
+    height: 200px;
+    padding: 20px 0;
+    display: block;
+}
+
+.aliados-swiper .swiper-wrapper {
+    align-items: center;
+    justify-content: center;   /* Ayuda al centrado visual */
+}
+
+.aliados-swiper .swiper-wrapper {
+    align-items: center;
+}
+
+.aliados-swiper .swiper-slide {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    width: 240px !important;
+    padding: 0 20px;
+    opacity: 1 !important;
+    visibility: visible !important;
+}
+
+/* Logos más grandes y equilibrados */
+.aliados-swiper .partner-logo {
+    max-width: 210px;
+    max-height: 95px;
+    width: auto;
+    height: auto;
+    object-fit: contain;
+    display: block !important;
+    opacity: 0.9;
+    filter: grayscale(100%);
+    mix-blend-mode: normal;
+    margin: 0 auto;
+    transition: all 0.3s ease;
+}
+
+/* Hover */
+.aliados-swiper .partner-logo:hover {
+    opacity: 1;
+    filter: grayscale(0%);
+    transform: scale(1.08);
+}
+
+/* Ajustes específicos para que se vean más parecidos y grandes */
+.aliados-swiper img[alt="AB Corp"] {
+    max-width: 190px;
+    transform: scale(1.4);
+}
+
+.aliados-swiper img[alt="Figuer"] {
+    max-width: 200px;
+    transform: scale(1.65);
+}
+
+/* Kiz reducido un poco para que no quede desproporcionado */
+.aliados-swiper img[alt="Kiz"] {
+    max-width: 185px;
+    transform: scale(1.15);
+}
+
+/* ========================================
+   ALIADOS - SOLO CARRUSEL EN MÓVIL
+   Desktop: 3 logos estáticos y centrados
+   Móvil: carrusel normal
+   ======================================== */
+
+/* ===== DESKTOP / TABLET: mostrar los 3 estáticos y centrados ===== */
+@media (min-width: 768px) {
+    .aliados-swiper {
+        height: auto !important;
+        padding: 20px 0;
+        display: flex !important;
+        justify-content: center;
+        align-items: center;
+        gap: 50px;
+        max-width: 900px;
+        margin: 0 auto;
+    }
+
+    .aliados-swiper .swiper-wrapper {
+        display: flex !important;
+        justify-content: center;
+        align-items: center;
+        gap: 50px;
+        width: auto !important;
+        transform: none !important;
+        transition: none !important;
+    }
+
+    .aliados-swiper .swiper-slide {
+        width: auto !important;
+        flex: 0 0 auto !important;
+        opacity: 1 !important;
+        visibility: visible !important;
+        transform: none !important;
+        margin: 0 !important;
+    }
+
+    /* Mantenemos los tamaños que te gustaron */
+    .aliados-swiper .partner-logo {
+        max-width: 190px;
+        max-height: 90px;
+        opacity: 0.9;
+        filter: grayscale(100%);
+    }
+
+    .aliados-swiper img[alt="AB Corp"] {
+        max-width: 170px;
+        transform: scale(1.3);
+    }
+
+    .aliados-swiper img[alt="Figuer"] {
+        max-width: 180px;
+        transform: scale(1.5);
+    }
+
+    .aliados-swiper img[alt="Kiz"] {
+        max-width: 165px;
+        transform: scale(1.1);
+    }
+}
+
+/* ===== MÓVIL: carrusel normal (Swiper funciona) ===== */
+@media (max-width: 767px) {
+    .aliados-swiper {
+        height: 160px;
+        padding: 15px 0;
+    }
+
+    .aliados-swiper .swiper-slide {
+        width: 200px !important;
+        padding: 0 10px;
+    }
+
+    .aliados-swiper .partner-logo {
+        max-width: 160px;
+        max-height: 80px;
+    }
+}
+
+/* ========================================
+   VALORES - Accordion independiente (estilo limpio como FAQ)
+   ======================================== */
+
+.valores-grid .valor-item {
+    display: flex;
+    flex-direction: column;
+    background: white;
+    border: 1px solid #e8f5e9;
+    border-radius: 12px;
+    overflow: hidden;
+    transition: box-shadow 0.2s ease;
+    text-align: left;
+}
+
+.valor-item:hover {
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+}
+
+.valor-header {
+    width: 100%;
+    display: flex;
+    align-items: flex-start;    /* Mejor alineación cuando el texto es largo */
+    gap: 12px;
+    background: transparent;
+    border: none;
+    padding: 16px 20px;
+    cursor: pointer;
+    font-size: 1rem;
+    color: #333;
+    text-align: left;
+    transition: background 0.2s ease;
+    min-height: 68px;           /* Altura suficiente para que quepan dos líneas sin desalinear */
+    box-sizing: border-box;
+}
+
+.valor-header:hover {
+    background: #f9f9f9;
+}
+
+.valor-header i:first-child {
+    color: #2e7d32;
+    font-size: 1.3rem;
+    flex-shrink: 0;
+}
+
+.valor-header span {
+    font-weight: 600;
+    flex: 1;
+    line-height: 1.25;
+}
+
+/* Ajuste especial para el nombre más largo */
+.valor-item:nth-child(6) .valor-header span {
+    font-size: 0.92rem;
+}
+
+.valor-arrow {
+    color: #2e7d32;
+    transition: transform 0.3s ease;
+    flex-shrink: 0;
+}
+
+.valor-item.active .valor-arrow {
+    transform: rotate(180deg);
+}
+
+.valor-descripcion {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.4s ease;
+    background: #f9f9f9;
+    border-top: 1px solid #e8f5e9;
+}
+
+.valor-item.active .valor-descripcion {
+    max-height: 200px;   /* Aumentado para que no se corte el texto largo (ej. Excelencia) */
+}
+
+.valor-descripcion p {
+    padding: 16px 20px;
+    margin: 0;
+    color: #555;
+    font-size: 0.95rem;
+    line-height: 1.55;
 }
