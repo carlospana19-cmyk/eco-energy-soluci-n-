@@ -175,14 +175,10 @@ body{font-family:Arial, sans-serif;background:var(--bg);color:var(--ink);font-si
 .btn-wa{background:#25d366;color:var(--white);text-decoration:none;padding:0 22px;height:44px;display:inline-flex;align-items:center;gap:8px;border-radius:3px;font-weight:600;font-size:.88rem;transition:background .2s}
 .btn-wa:hover{background:#1ebc58}
 
-/* FOOTER - mismo color y tipografía que las demás páginas */
-.footer{background:#008080;color:#fff;padding:44px 32px 20px; font-family: Arial, sans-serif;}
-.footer-inner{max-width:860px;margin:0 auto}
-.footer-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:36px;margin-bottom:32px}
-.footer-grid h4{color:#fff;font-size:.78rem;text-transform:uppercase;letter-spacing:1.2px;margin-bottom:10px;font-weight:600}
-.footer-grid p,.footer-grid a{font-size:.83rem;line-height:1.9;color:rgba(255,255,255,.85);text-decoration:none;display:block}
-.footer-grid a:hover{color:#fff}
-.footer-bottom{border-top:1px solid rgba(255,255,255,.2);padding-top:14px;font-size:.75rem;color:rgba(255,255,255,.7);text-align:center}
+/* Footer - usa los estilos de home.css */
+.footer {
+    font-family: Arial, sans-serif;
+}
 
 @media(max-width:620px){
   .resumen-grid{grid-template-columns:1fr}
@@ -315,29 +311,36 @@ body{font-family:Arial, sans-serif;background:var(--bg);color:var(--ink);font-si
   </div>
 </div>
 
+<!-- Footer -->
 <footer class="footer">
-  <div class="footer-inner">
-    <div class="footer-grid">
-      <div>
-        <h4>Eco Energy Solutions</h4>
-        <p>Empresa 100% panameña con más de 9 años liderando el cambio energético en Panamá.</p>
-        <p style="margin-top:8px;color:#fffdfd;font-size:.72rem">Energía inteligente, ahorro sostenible.</p>
-      </div>
-      <div>
-        <h4>Síguenos</h4>
-        <a href="https://www.instagram.com/ecoenergysolutionspty/" target="_blank"><i class="fab fa-instagram" style="margin-right:7px"></i>Instagram</a>
-        <a href="https://www.facebook.com/EcoEnergySolutionsPTY/" target="_blank"><i class="fab fa-facebook-f" style="margin-right:7px"></i>Facebook</a>
-        <a href="https://wa.me/50769684207" target="_blank"><i class="fab fa-whatsapp" style="margin-right:7px"></i>WhatsApp</a>
-      </div>
-      <div>
-        <h4>Contacto</h4>
-        <p>info@ecoenergysolutionspa.com</p>
-        <p>+507 6968-4207</p>
-        <p>www.ecoenergysolutionspa.com</p>
+  <div class="footer-container">
+    <div class="footer-section">
+      <h3>Eco Energy Solutions</h3>
+      <p>Empresa 100% panameña con más de 9 años liderando el cambio energético en Panamá.</p>
+      <p style="margin-top:8px;color:#444;font-size:.72rem">Energía inteligente, ahorro sostenible.</p>
+    </div>
+    <div class="footer-section">
+      <h3>Síguenos</h3>
+      <div class="social-links">
+        <a href="https://www.instagram.com/ecoenergysolutionspty/" target="_blank" class="social-link">
+          <i class="fab fa-instagram" style="margin-right:7px"></i>Instagram
+        </a>
+        <a href="https://www.facebook.com/EcoEnergySolutionsPTY/" target="_blank" class="social-link">
+          <i class="fab fa-facebook-f" style="margin-right:7px"></i>Facebook
+        </a>
+        <a href="https://wa.me/50769684207" target="_blank" class="social-link">
+          <i class="fab fa-whatsapp" style="margin-right:7px"></i>WhatsApp
+        </a>
       </div>
     </div>
-    <div class="footer-bottom">&copy; 2026 Eco Energy Solutions. Todos los derechos reservados.</div>
+    <div class="footer-section">
+      <h3>Contacto</h3>
+      <p>info@ecoenergysolutionspa.com</p>
+      <p>+507 6968-4207</p>
+      <p>www.ecoenergysolutionspa.com</p>
+    </div>
   </div>
+  <div class="footer-bottom">&copy; 2026 Eco Energy Solutions. Todos los derechos reservados.</div>
 </footer>
 
 <script>
@@ -381,7 +384,7 @@ document.getElementById('b-red-val').textContent=fmt(totalRed25);
 document.getElementById('b-eco-val').textContent=fmt(totalEco25 + costoTotal);
 
   // WA precargado
-  const msg = encodeURIComponent(`Hola, usé la calculadora de EcoEnergy. Mi factura es de ${fmt(bill)}/mes. Con EcoEnergy pagaría ${fmt(cuota)}/mes y ahorraría ${fmt(ahorro8)} en 8 años. ¿Me pueden enviar una propuesta?`);
+  const msg = encodeURIComponent(`Hola, usé la calculadora de EcoEnergy. Mi factura es de ${fmt(bill)}/mes. Con EcoEnergy pagaría ${fmt(cuota)}/mes y ahorraría ${fmt(ahorro8)} en 25 años. ¿Me pueden enviar una propuesta?`);
   document.getElementById('wa-btn').href = `https://wa.me/50769684207?text=${msg}`;
 
   // Mostrar resultado
