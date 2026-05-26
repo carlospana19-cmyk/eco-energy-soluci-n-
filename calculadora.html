@@ -357,8 +357,9 @@ function calcular(){
   const bill = parseFloat(document.getElementById('bill').value) || 0;
   if(bill < 50) return;
 
-  // Descuento fijo: el 95% de la factura
-  const cuota      = Math.round(bill * 0.95);
+  // Descuento: 0% hasta $200, 10% arriba de $200
+  const DESCUENTO = bill > 200 ? 0.10 : 0;
+  const cuota      = Math.round(bill * (1 - DESCUENTO));
   const ahorroMes  = bill - cuota;
   const costoTotal = bill * RATIO_COST_PER_BILL;
 
