@@ -319,7 +319,7 @@ body{font-family:Arial, sans-serif;background:var(--bg);color:var(--ink);font-si
     <div class="footer-section">
       <h3>Eco Energy Solutions</h3>
       <p>Empresa 100% panameña con más de 9 años liderando el cambio energético en Panamá.</p>
-      <p style="margin-top:8px;color:#444;font-size:.72rem">Energía inteligente, ahorro sostenible.</p>
+      <p style="margin-top:8px;color:rgb(224, 224, 224);font-size:.72rem">Energía inteligente, ahorro sostenible.</p>
     </div>
     <div class="footer-section">
       <h3>Síguenos</h3>
@@ -386,7 +386,7 @@ document.getElementById('b-red-val').textContent=fmt(totalRed25);
 document.getElementById('b-eco-val').textContent=fmt(totalEco25 + costoTotal);
 
   // WA precargado
-  const msg = encodeURIComponent(`Hola, usé la calculadora de EcoEnergy. Mi factura es de ${fmt(bill)}/mes. Con EcoEnergy pagaría ${fmt(cuota)}/mes y ahorraría ${fmt(ahorro8)} en 25 años. ¿Me pueden enviar una propuesta?`);
+  const msg = encodeURIComponent(`Hola, usé la calculadora de EcoEnergy. Mi factura es de ${fmt(bill)}/mes. Con EcoEnergy pagaría ${fmt(cuota)}/mes y ahorraría ${fmt(ahorro8)} en 8 años. ¿Me pueden enviar una propuesta?`);
   document.getElementById('wa-btn').href = `https://wa.me/50769684207?text=${msg}`;
 
   // Mostrar resultado
