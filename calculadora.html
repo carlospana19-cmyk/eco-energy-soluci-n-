@@ -446,8 +446,14 @@ for(let y = 1; y <= 25; y++){
 
   // Etiqueta especial
   let yearLabel = `Año ${y}`;
-  if(y === ANOS_SUB) yearLabel = `Año ${y} 🎉`;
-  if(y === ANOS_SUB + 1) yearLabel = `Año ${y} ⚡`;
+  if(y === ANOS_SUB) {
+    // Icono de completado/logro en color Teal
+    yearLabel = `Año ${y} <i class="fas fa-check-circle" style="color: var(--teal); margin-left: 6px; font-size: 0.95em;" title="Equipo 100% pagado"></i>`;
+  }
+  if(y === ANOS_SUB + 1) {
+    // Icono de energía limpia en color amarillo/dorado profesional
+    yearLabel = `Año ${y} <i class="fas fa-bolt" style="color: #eab308; margin-left: 6px; font-size: 0.95em;" title="Inicia energía gratis"></i>`;
+  }
 
   // Texto cuota
   const cuotaTexto = cuotaAnual > 0 ? fmt(cuotaAnual) : '<span style="color:#aaa;font-weight:400">Gratis</span>';
