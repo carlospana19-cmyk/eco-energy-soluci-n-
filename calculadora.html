@@ -192,6 +192,39 @@ body{font-family:Arial, sans-serif;background:var(--bg);color:var(--ink);font-si
   .nav{padding:0 16px}
   .page-header{padding:36px 20px 32px}
 }
+
+/* TABLA DE GANANCIAS */
+.tabla-section{margin-bottom:16px}
+.tabla-header{background:var(--ink);padding:16px 26px;border-radius:4px 4px 0 0}
+.tabla-header p{color:#555;font-size:.68rem;letter-spacing:1.8px;text-transform:uppercase;font-weight:600}
+.tabla-header h2{color:var(--white);font-family:Arial,sans-serif;font-size:1.1rem;font-weight:600;margin-top:3px}
+
+.tabla-flujo{width:100%;border-collapse:collapse;font-size:.82rem}
+.tabla-wrap{border:1px solid var(--line);border-top:none;border-radius:0 0 4px 4px;overflow:hidden;overflow-x:auto}
+.tabla-flujo thead tr{background:#f5f5f5}
+.tabla-flujo thead th{padding:11px 14px;text-align:right;font-weight:700;font-size:.7rem;letter-spacing:.8px;text-transform:uppercase;color:#555;white-space:nowrap;border-bottom:2px solid var(--line)}
+.tabla-flujo thead th:first-child{text-align:center}
+.tabla-flujo tbody td{padding:11px 14px;text-align:right;color:var(--ink2);border-bottom:1px solid var(--line)}
+.tabla-flujo tbody td:first-child{text-align:center;font-weight:700;color:var(--ink);font-size:.8rem}
+.tabla-flujo tbody tr:last-child td{border-bottom:none}
+.tabla-flujo tbody tr:hover{background:#fafff9}
+
+/* Columna red — rojo suave */
+.col-red{color:#c62828;font-weight:600}
+/* Columna eco — teal */
+.col-eco{color:var(--teal);font-weight:700}
+/* Columna ahorro — verde oscuro destacado */
+.col-win{color:#1b5e20;font-weight:700}
+/* Fila año 8 — equipo libre */
+.row-libre td{background:#e8f5e9;font-weight:700;color:#1b5e20}
+/* Filas años 9+ — energía gratis */
+.row-gratis td{background:#f0faf8}
+.row-gratis .col-eco{color:#888;font-weight:400}
+/* Fila total */
+.row-total td{background:var(--ink);color:var(--white);font-weight:700;font-size:.88rem}
+.row-total .col-red{color:#ef9a9a;font-weight:700}
+.row-total .col-eco{color:var(--teal);font-weight:700}
+.row-total .col-win{color:#a5d6a7;font-weight:700}
 </style>
 </head>
 <body>
@@ -275,6 +308,28 @@ body{font-family:Arial, sans-serif;background:var(--bg);color:var(--ink);font-si
       </div>
     </div>
 
+    <!-- TABLA DE GANANCIAS AÑO A AÑO -->
+    <div class="tabla-section">
+      <div class="tabla-header">
+        <p>Tu dinero año a año</p>
+        <h2>Lo que le pagas a la eléctrica vs. lo que pagas con EcoEnergy</h2>
+      </div>
+      <div class="tabla-wrap">
+        <table class="tabla-flujo">
+          <thead>
+            <tr>
+              <th>Año</th>
+              <th class="col-red">Pagas a la red</th>
+              <th class="col-eco">Cuota EcoEnergy</th>
+              <th class="col-win">Lo que ganas</th>
+              <th>Acumulado a tu favor</th>
+            </tr>
+          </thead>
+          <tbody id="flujo-body"></tbody>
+        </table>
+      </div>
+    </div>
+
     <!-- BARRAS 25 AÑOS -->
     <div class="compare-card">
       <div class="compare-header">
@@ -298,27 +353,9 @@ body{font-family:Arial, sans-serif;background:var(--bg);color:var(--ink);font-si
           </div>
           <div class="cr-val" id="b-eco-val">—</div>
         </div>
-</div> <!-- cierra compare-rows -->
+        </div> <!-- cierra compare-rows -->
       </div> <!-- cierra compare-card -->
-
-    <!-- Tabla de Resumen Financiero a 25 Años -->
-    <div class="finance-summary">
-      <h3 style="color:var(--ink);font-size:1.1rem;font-weight:600;margin:24px 0 12px">Resumen de tu Impacto Financiero a 25 Años</h3>
-      <table class="finance-table" style="width:100%;border-collapse:collapse;background:var(--white);border:1px solid var(--line);border-radius:4px;overflow:hidden">
-        <tr style="border-bottom:1px solid var(--line)">
-          <td style="padding:12px 16px;font-weight:600;color:var(--ink);background:var(--bg)">Pérdida Total / Pago a la Red Eléctrica (Sin Solar)</td>
-          <td id="t-red-total" style="padding:12px 16px;font-weight:700;color:#c62828;text-align:right">—</td>
-        </tr>
-        <tr style="border-bottom:1px solid var(--line)">
-          <td style="padding:12px 16px;font-weight:600;color:var(--ink);background:var(--bg)">Suscripción EcoEnergy (Con Solar)</td>
-          <td id="t-eco-total" style="padding:12px 16px;font-weight:700;color:var(--teal);text-align:right">—</td>
-        </tr>
-        <tr>
-          <td style="padding:12px 16px;font-weight:600;color:var(--ink);background:var(--bg)">Ganancia Total / Ahorro Neto en tu Bolsillo</td>
-          <td id="t-ahorro-total" style="padding:12px 16px;font-weight:700;color:#2e7d32;text-align:right">—</td>
-        </tr>
-      </table>
-    </div>
+    </div> <!-- cierra #resultado -->
 
     <!-- CTA -->
     <div class="cta-strip">
@@ -386,33 +423,67 @@ function calcular(){
   document.getElementById('r-cuota').textContent     = fmt(cuota) + '/mes';
   document.getElementById('r-ahorro-mes').textContent = fmt(ahorroMes) + '/mes';
 
-// Ahorro acumulado 25 años
-  let ahorro25 = 0, totalRed25 = 0, totalEco25 = 0;
-  for(let y = 1; y <= 25; y++){
-    const redAnual   = bill * 12 * Math.pow(1 + TASA_ALZA, y - 1);
-    totalRed25      += redAnual;
-    const cuotaAnual = y <= ANOS_SUB ? cuota * 12 : 0;
-    totalEco25      += cuotaAnual;
-    ahorro25 += (redAnual - cuotaAnual);
-  }
-  document.getElementById('r-ahorro8').textContent = fmt(ahorro25);
+// Loop 25 años — tabla + acumulados
+let ahorro25 = 0, totalRed25 = 0, totalEco25 = 0, acumulado = 0;
+let tablaHTML = '';
 
-  // Barras
-  const maxVal = Math.max(totalRed25, totalEco25);
-  setTimeout(()=>{
-    document.getElementById('b-red').style.width='100%';
-    document.getElementById('b-eco').style.width=Math.round((totalEco25) / maxVal * 100) + '%';
-  }, 60);
-  document.getElementById('b-red-val').textContent=fmt(totalRed25);
-  document.getElementById('b-eco-val').textContent=fmt(totalEco25);
+for(let y = 1; y <= 25; y++){
+  const redAnual = bill * 12 * Math.pow(1 + TASA_ALZA, y - 1);
+  totalRed25 += redAnual;
 
-  // Tabla de Resumen Financiero a 25 Años
-  document.getElementById('t-red-total').textContent = fmt(totalRed25);
-  document.getElementById('t-eco-total').textContent = fmt(totalEco25);
-  document.getElementById('t-ahorro-total').textContent = fmt(ahorro25);
+  // Años 1-8: paga cuota. Años 9-25: energía gratis ($0)
+  const cuotaAnual = y <= ANOS_SUB ? cuota * 12 : 0;
+  totalEco25 += cuotaAnual;
 
-  // WA precargado
-  const msg = encodeURIComponent(`Hola, usé la calculadora de EcoEnergy. Mi factura es de ${fmt(bill)}/mes. Con EcoEnergy pagaría ${fmt(cuota)}/mes y ahorraría ${fmt(ahorro25)} en 25 años. ¿Me pueden enviar una propuesta?`);
+  const gananciaAnual = redAnual - cuotaAnual;
+  ahorro25 += gananciaAnual;
+  acumulado += gananciaAnual;
+
+  // Clases especiales por fila
+  let rowClass = '';
+  if(y === ANOS_SUB) rowClass = 'row-libre';
+  else if(y > ANOS_SUB) rowClass = 'row-gratis';
+
+  // Etiqueta especial
+  let yearLabel = `Año ${y}`;
+  if(y === ANOS_SUB) yearLabel = `Año ${y} 🎉`;
+  if(y === ANOS_SUB + 1) yearLabel = `Año ${y} ⚡`;
+
+  // Texto cuota
+  const cuotaTexto = cuotaAnual > 0 ? fmt(cuotaAnual) : '<span style="color:#aaa;font-weight:400">Gratis</span>';
+
+  tablaHTML += `<tr class="${rowClass}">
+    <td>${yearLabel}</td>
+    <td class="col-red">${fmt(redAnual)}</td>
+    <td class="col-eco">${cuotaTexto}</td>
+    <td class="col-win">${fmt(gananciaAnual)}</td>
+    <td>${fmt(acumulado)}</td>
+  </tr>`;
+}
+
+// Fila TOTAL
+tablaHTML += `<tr class="row-total">
+  <td>TOTAL 25 AÑOS</td>
+  <td class="col-red">${fmt(totalRed25)}</td>
+  <td class="col-eco">${fmt(totalEco25)}</td>
+  <td class="col-win">${fmt(ahorro25)}</td>
+  <td>${fmt(ahorro25)}</td>
+</tr>`;
+
+document.getElementById('flujo-body').innerHTML = tablaHTML;
+document.getElementById('r-ahorro8').textContent = fmt(ahorro25);
+
+  // Barras (igual que antes)
+const maxVal = Math.max(totalRed25, totalEco25 + costoTotal);
+setTimeout(()=>{
+  document.getElementById('b-red').style.width = '100%';
+  document.getElementById('b-eco').style.width = Math.round((totalEco25 + costoTotal) / maxVal * 100) + '%';
+}, 60);
+document.getElementById('b-red-val').textContent = fmt(totalRed25);
+document.getElementById('b-eco-val').textContent = fmt(totalEco25 + costoTotal);
+
+// WA precargado
+const msg = encodeURIComponent(`Hola, usé la calculadora de EcoEnergy. Mi factura es de ${fmt(bill)}/mes. Con EcoEnergy pagaría ${fmt(cuota)}/mes y ganaría ${fmt(ahorro25)} en 25 años. ¿Me pueden enviar una propuesta?`);
   document.getElementById('wa-btn').href = `https://wa.me/50769684207?text=${msg}`;
 
   // Mostrar resultado
