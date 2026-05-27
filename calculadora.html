@@ -473,14 +473,14 @@ tablaHTML += `<tr class="row-total">
 document.getElementById('flujo-body').innerHTML = tablaHTML;
 document.getElementById('r-ahorro8').textContent = fmt(ahorro25);
 
-  // Barras (igual que antes)
-const maxVal = Math.max(totalRed25, totalEco25 + costoTotal);
-setTimeout(()=>{
-  document.getElementById('b-red').style.width = '100%';
-  document.getElementById('b-eco').style.width = Math.round((totalEco25 + costoTotal) / maxVal * 100) + '%';
-}, 60);
-document.getElementById('b-red-val').textContent = fmt(totalRed25);
-document.getElementById('b-eco-val').textContent = fmt(totalEco25 + costoTotal);
+  // Barras
+  const maxVal = Math.max(totalRed25, totalEco25);
+  setTimeout(()=>{
+    document.getElementById('b-red').style.width = '100%';
+    document.getElementById('b-eco').style.width = Math.round((totalEco25) / maxVal * 100) + '%';
+  }, 60);
+  document.getElementById('b-red-val').textContent = fmt(totalRed25);
+  document.getElementById('b-eco-val').textContent = fmt(totalEco25);
 
 // WA precargado
 const msg = encodeURIComponent(`Hola, usé la calculadora de EcoEnergy. Mi factura es de ${fmt(bill)}/mes. Con EcoEnergy pagaría ${fmt(cuota)}/mes y ganaría ${fmt(ahorro25)} en 25 años. ¿Me pueden enviar una propuesta?`);
